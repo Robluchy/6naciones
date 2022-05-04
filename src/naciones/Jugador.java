@@ -11,9 +11,13 @@ public class Jugador extends Persona {
     public Jugador() {
         super();
         equipo = null;
-        velocidad = 0;
-        fuerza = 0;
-        resistencia = 0;
+        velocidad = randomInt(1, 100);
+        fuerza = randomInt(1, 100);
+        resistencia = randomInt(1, 100);
+    }
+
+    private int randomInt(int min, int max) {
+        return (int) Math.floor((Math.random() * (max - min + 1)) + min);
     }
 
     public Jugador(Jugador jugador) {
@@ -24,7 +28,8 @@ public class Jugador extends Persona {
         resistencia = jugador.resistencia;
     }
 
-    public Jugador(String nombreCompleto, double peso, Date fechaNacimiento, Equipo equipo, int velocidad, int fuerza, int resistencia) {
+    public Jugador(String nombreCompleto, double peso, Date fechaNacimiento, Equipo equipo, int velocidad, int fuerza,
+            int resistencia) {
         super(nombreCompleto, peso, fechaNacimiento);
         this.equipo = equipo;
         this.velocidad = velocidad;
