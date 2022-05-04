@@ -108,7 +108,6 @@ public class Partido {
                 + '}';
     }
 
-
     public Equipo calcularGanador() {
         if (golesVisitante > golesLocal) {
             return equiposVisitante.get(0);
@@ -119,11 +118,8 @@ public class Partido {
         }
     }
 
-
     public void jugar(Estadio estadio) {
         estadio.setCapacidad(estadio.getCapacidad() - (equiposVisitante.size() + equiposLocal.size()));
     }
-
-    /
 
 }

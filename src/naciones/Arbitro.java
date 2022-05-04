@@ -2,8 +2,7 @@ package naciones;
 
 import java.util.Date;
 
-public class Arbitro extends Persona{
-
+public class Arbitro extends Persona {
 
     private int presicion;
 
@@ -36,14 +35,14 @@ public class Arbitro extends Persona{
         return "Arbitro{" + "presicion=" + presicion + '}';
     }
 
-    //METODO EMPEZAR PARTIDO
-    public void empezarPartido(Partido partido){
+    // METODO EMPEZAR PARTIDO
+    public void empezarPartido(Partido partido) {
         System.out.println("El arbitro empieza el partido");
     }
-    //METODO FINALIZAR PARTIDO
-    public void finalizarPartido(Partido partido){
+
+    // METODO FINALIZAR PARTIDO
+    public void finalizarPartido(Partido partido) {
         System.out.println("El arbitro finaliza el partido");
     }
-    
-    
+
 }

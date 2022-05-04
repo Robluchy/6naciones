@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Equipo {
 
-    private enum nombreNacion{
+    private enum nombreNacion {
         Irlanda,
         Escocia,
         Francia,
@@ -12,7 +12,7 @@ public class Equipo {
         Italia,
         Inglaterra
     }
-    
+
     private ArrayList<Jugador> alineacion;
     private int partidosGanados;
     private int partidosJugados;
@@ -32,7 +32,8 @@ public class Equipo {
 
     }
 
-    public Equipo(int partidosGanados, int partidosJugados, int partidosPerdidos, int partidosEmpatados, ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores, ArrayList<Jugador> alineacion) {
+    public Equipo(int partidosGanados, int partidosJugados, int partidosPerdidos, int partidosEmpatados,
+            ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores, ArrayList<Jugador> alineacion) {
         this.partidosGanados = partidosGanados;
         this.partidosJugados = partidosJugados;
         this.partidosPerdidos = partidosPerdidos;
@@ -101,11 +102,12 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + ", partidosGanados=" + partidosGanados + ", partidosJugados=" + partidosJugados + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados + ", jugadores=" + jugadores + ", entrenadores=" + entrenadores + '}';
+        return "Equipo{" + ", partidosGanados=" + partidosGanados + ", partidosJugados=" + partidosJugados
+                + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados + ", jugadores="
+                + jugadores + ", entrenadores=" + entrenadores + '}';
     }
 
-
-    //Metodos
+    // Metodos
 
     public void addEmpate() {
         partidosEmpatados++;
@@ -126,7 +128,5 @@ public class Equipo {
     public void addPartidoJugado() {
         partidosJugados++;
     }
-
-
 
 }

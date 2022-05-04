@@ -2,12 +2,10 @@ package naciones;
 
 import java.util.Date;
 
-public class Entrenador extends Persona{
-
+public class Entrenador extends Persona {
 
     private int experiencia;
     private Equipo equipo;
-
 
     public Entrenador() {
         experiencia = 0;
@@ -17,7 +15,7 @@ public class Entrenador extends Persona{
     public Entrenador(Entrenador entrenador) {
         experiencia = entrenador.experiencia;
         equipo = entrenador.equipo;
-        
+
     }
 
     public Entrenador(String nombreCompleto, double peso, Date fechaNacimiento, int experiencia, Equipo equipo) {
@@ -34,7 +32,6 @@ public class Entrenador extends Persona{
         this.experiencia = experiencia;
     }
 
-
     public Equipo getEquipo() {
         return equipo;
     }
@@ -47,10 +44,10 @@ public class Entrenador extends Persona{
     public String toString() {
         return "Entrenador{" + "experiencia=" + experiencia + ", equipo=" + equipo + '}';
     }
-    
-    //metodo poner alineacion de jugadores
-    public void ponerAlineacion(Jugador jugador){
-        return ;
+
+    // metodo poner alineacion de jugadores
+    public void ponerAlineacion(Jugador jugador) {
+        return;
     }
 
 }
