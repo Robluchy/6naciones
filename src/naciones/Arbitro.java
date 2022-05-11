@@ -8,7 +8,11 @@ public class Arbitro extends Persona {
 
     public Arbitro() {
         super();
-        presicion = 0;
+        presicion = randomInt(0, 100);
+    }
+
+    private int randomInt(int min, int max) {
+        return (int) Math.floor((Math.random() * (max - min + 1)) + min);
     }
 
     public Arbitro(Arbitro arbitro) {

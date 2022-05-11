@@ -8,7 +8,7 @@ public class Entrenador extends Persona {
     private Equipo equipo;
 
     public Entrenador() {
-        experiencia = 0;
+        experiencia = randomInt(0, 100);
         equipo = null;
     }
 
@@ -17,6 +17,11 @@ public class Entrenador extends Persona {
         equipo = entrenador.equipo;
 
     }
+
+    private int randomInt(int min, int max) {
+        return (int) Math.floor((Math.random() * (max - min + 1)) + min);
+    }
+
 
     public Entrenador(String nombreCompleto, double peso, Date fechaNacimiento, int experiencia, Equipo equipo) {
         super(nombreCompleto, peso, fechaNacimiento);

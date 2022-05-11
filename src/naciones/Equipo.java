@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Equipo {
 
-    private enum nombreNacion {
-        Irlanda,
-        Escocia,
-        Francia,
-        Gales,
-        Italia,
-        Inglaterra
-    }
+    // private enum nombreNacion {
+    //     Irlanda,
+    //     Escocia,
+    //     Francia,
+    //     Gales,
+    //     Italia,
+    //     Inglaterra
+    // }
 
     private ArrayList<Jugador> alineacion;
     private int partidosGanados;
@@ -24,11 +24,11 @@ public class Equipo {
     public Equipo() {
         jugadores = new ArrayList<>();
         entrenadores = new ArrayList<>();
+        alineacion = new ArrayList<>();
         partidosEmpatados = 0;
         partidosGanados = 0;
         partidosJugados = 0;
         partidosPerdidos = 0;
-        alineacion = new ArrayList<>();
 
     }
 
@@ -82,6 +82,14 @@ public class Equipo {
 
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
+    }
+    public void addJugador(Jugador jugador) {
+
+        this.jugadores.add(jugador);
+    }
+
+    public void addEntrenador(Entrenador entrenador) {
+        this.entrenadores.add(entrenador);
     }
 
     public ArrayList<Entrenador> getEntrenadores() {
