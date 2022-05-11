@@ -110,11 +110,20 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + ", partidosGanados=" + partidosGanados + ", partidosJugados=" + partidosJugados
-                + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados + ", jugadores="
-                + jugadores + ", entrenadores=" + entrenadores + '}';
+        String aux = "Equipo{" + ", partidosGanados=" + partidosGanados + ", partidosJugados=" + partidosJugados + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados +   '}';
+        for (Jugador jugador : jugadores) {
+            aux += "\n" + jugador.toString();
+        }
+        for (Entrenador entrenador : entrenadores) {
+            aux += "\n" + entrenador.toString();
+        }
+        return aux;
     }
 
+    public void getName() {
+       
+
+    }
     // Metodos
 
     public void addEmpate() {

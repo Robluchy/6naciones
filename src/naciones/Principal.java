@@ -70,9 +70,9 @@ public class Principal {
 			System.out.println(entrenador);
 		}
 		return entrenadores;
-	
+
 	}
-	
+
 	public static ArrayList<Equipo> crearEquipos(ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
 		ArrayList<Equipo> equipos = new ArrayList<>();
 		if (jugadores.size() > 1 && entrenadores.size() > 1) {
@@ -80,19 +80,18 @@ public class Principal {
 			int contadorEntrenadores = 0;
 			int contadorEquipos = 0;
 			for (int i = 0; i < 6; i++) {
-				contadorEquipos ++;
-				System.out.println(contadorEquipos ++);
 				equipos.add(new Equipo());
-				for (int e = 0; e < 30; i++) {
+				contadorEquipos++;
+				System.out.println(contadorEquipos++);
+				for (int e = 0; e < 30; e++) {
 					equipos.get(i).addJugador(jugadores.get(contadorJugadores));
 					jugadores.get(contadorJugadores).setEquipo(equipos.get(i));
 					contadorJugadores++;
-					
 				}
-				for (int j = 0; j < 3; i++) {
+				for (int j = 0; j < 3; j++) {
 					equipos.get(i).addEntrenador(entrenadores.get(contadorEntrenadores));
 					entrenadores.get(contadorEntrenadores).setEquipo(equipos.get(i));
-					contadorEntrenadores++;	
+					contadorEntrenadores++;
 				}
 
 			}
@@ -105,19 +104,17 @@ public class Principal {
 		}
 		return equipos;
 	}
-	
+
 	private static ArrayList<Arbitro> crearArbitros() {
 		for (int i = 0; i < 5; i++) {
 			arbitros.add(new Arbitro());
 		}
-		
+
 		for (Arbitro arbitro : arbitros) {
 			System.out.println(arbitro);
 		}
 		return arbitros;
 	}
-
-
 
 	public static int aleatorio() {
 		int random = (int) Math.floor(Math.random() * (100 - 0 + 1) + 0);

@@ -66,7 +66,7 @@ public class Jugador extends Persona implements Comparable<Jugador>
     @Override
     public String toString() {
         return "Jugador{" +
-                "equipo=" + equipo +
+                "nombre"  + this.getNombreCompleto() +
                 ", velocidad=" + velocidad +
                 ", fuerza=" + fuerza +
                 ", resistencia=" + resistencia +
