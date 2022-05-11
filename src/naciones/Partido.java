@@ -25,12 +25,13 @@ public class Partido {
 
         equiposVisitante = new ArrayList<>();
         for (Equipo equipo : partido.equiposVisitante) {
-            this.equiposVisitante.add(new Equipo(equipo));
+            this.equiposVisitante.add(new Equipo());
+            
         }
 
         equiposLocal = new ArrayList<>();
         for (Equipo equipo : partido.equiposLocal) {
-            this.equiposLocal.add(new Equipo(equipo));
+            this.equiposLocal.add(new Equipo());
         }
 
         arbitros = new ArrayList<>();

@@ -17,9 +17,9 @@ public class Principal2 {
 		int opcion;
 		do {
 			System.out.println("Menú .(Elige una opción 1-5)");
-			System.out.println("1. Submenú Jugadores.");
-			System.out.println("2. Submenú Entrenadores.");
-			System.out.println("3. Submenú Equipo.");
+			System.out.println("1. Crear Jugadores.");
+			System.out.println("2. Crear Entrenadores.");
+			System.out.println("3. Crear Equipo.");
 			System.out.println("4. Crear Arbitros.");
 			System.out.println("5. Salir.");
 			opcion = sc.nextInt();
@@ -56,7 +56,7 @@ public class Principal2 {
 		} while (opcion != 5);
 	}
 
-	private  ArrayList<Arbitro>  crearArbitros() {
+	private static ArrayList<Arbitro>  crearArbitros() {
 		ArrayList<Arbitro> arbitros = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
 			arbitros.add(new Arbitro());
@@ -64,15 +64,15 @@ public class Principal2 {
 		return arbitros;
 	}
 
-	public ArrayList<Jugador> crearJugadores() {
+	public static ArrayList<Jugador> crearJugadores() {
 		ArrayList<Jugador> jugadores = new ArrayList<>();
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 180; i++) {
 			jugadores.add(new Jugador());
 		}
 		return jugadores;
 	}
 
-	public ArrayList<Entrenador> crearEntrenadores() {
+	public static ArrayList<Entrenador> crearEntrenadores() {
 		ArrayList<Entrenador> entrenadores = new ArrayList<>();
 		for (int i = 0; i < 18; i++) {
 			entrenadores.add(new Entrenador());
@@ -82,7 +82,7 @@ public class Principal2 {
 
 	public static ArrayList<Equipo> crearEquipos() {
 		for (int i = 0; i < 6; i++) {
-			equipos.add(new Equipo(crearJugadores(), crearEntrenadores()));
+			equipos.add(new Equipo());
 		}
 		return equipos;
 

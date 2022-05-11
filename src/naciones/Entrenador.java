@@ -25,15 +25,19 @@ public class Entrenador extends Persona {
     }
 
     public int getExperiencia() {
+
         return experiencia;
     }
 
     public void setExperiencia(int experiencia) {
+
         this.experiencia = experiencia;
     }
 
     public Equipo getEquipo() {
+
         return equipo;
+
     }
 
     public void setEquipo(Equipo equipo) {

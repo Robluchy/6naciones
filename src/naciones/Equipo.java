@@ -13,11 +13,12 @@ public class Equipo {
         Inglaterra
     }
 
-    private ArrayList<Jugador> alineacion;
+   
     private int partidosGanados;
     private int partidosJugados;
     private int partidosPerdidos;
     private int partidosEmpatados;
+    private ArrayList<Jugador> alineacion;
     private ArrayList<Jugador> jugadores;
     private ArrayList<Entrenador> entrenadores;
 
