@@ -1,2 +1,2 @@
-# 6naciones
-trabajo en clase con 
+# 6 Naciones
+Trabajo en clase con 
