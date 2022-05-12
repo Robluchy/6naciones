@@ -1,8 +1,9 @@
 package naciones;
 
 import java.util.Date;
+public class Jugador extends Persona implements Comparable<Jugador> 
+{
 
-public class Jugador extends Persona {
     private Equipo equipo;
     private int velocidad;
     private int fuerza;
@@ -10,6 +11,7 @@ public class Jugador extends Persona {
 
     public Jugador() {
         super();
+ 
         equipo = null;
         velocidad = randomInt(1, 100);
         fuerza = randomInt(1, 100);
@@ -18,14 +20,6 @@ public class Jugador extends Persona {
 
     private int randomInt(int min, int max) {
         return (int) Math.floor((Math.random() * (max - min + 1)) + min);
-    }
-
-    public Jugador(Jugador jugador) {
-        super(jugador);
-        equipo = jugador.equipo;
-        velocidad = jugador.velocidad;
-        fuerza = jugador.fuerza;
-        resistencia = jugador.resistencia;
     }
 
     public Jugador(String nombreCompleto, double peso, Date fechaNacimiento, Equipo equipo, int velocidad, int fuerza,
@@ -71,11 +65,24 @@ public class Jugador extends Persona {
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "equipo=" + equipo +
-                ", velocidad=" + velocidad +
-                ", fuerza=" + fuerza +
-                ", resistencia=" + resistencia +
-                '}';
+        return  this.getNombreCompleto() +
+                ", velocidad " + velocidad +
+                ", fuerza " + fuerza +
+                ", resistencia " + resistencia + "\n";
+    }
+
+    @Override
+    public int compareTo(Jugador jugador) {
+
+        int media = (this.velocidad + this.fuerza + this.resistencia) / 3;
+        int mediaJugador = (jugador.velocidad + jugador.fuerza + jugador.resistencia) / 3;
+		
+		if(media < mediaJugador)
+			return 1;
+		else if(media > mediaJugador)
+			return -1;
+		else
+			return 0;
+
     }
 }

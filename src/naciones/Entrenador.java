@@ -8,14 +8,12 @@ public class Entrenador extends Persona {
     private Equipo equipo;
 
     public Entrenador() {
-        experiencia = 0;
+        experiencia = randomInt(1, 100);
         equipo = null;
     }
 
-    public Entrenador(Entrenador entrenador) {
-        experiencia = entrenador.experiencia;
-        equipo = entrenador.equipo;
-
+    private int randomInt(int min, int max) {
+        return (int) Math.floor((Math.random() * (max - min + 1)) + min);
     }
 
     public Entrenador(String nombreCompleto, double peso, Date fechaNacimiento, int experiencia, Equipo equipo) {
@@ -46,7 +44,7 @@ public class Entrenador extends Persona {
 
     @Override
     public String toString() {
-        return "Entrenador{" + "experiencia=" + experiencia + ", equipo=" + equipo + '}';
+        return this.getNombreCompleto() + "  experiencia " + experiencia + "\n";
     }
 
     // metodo poner alineacion de jugadores

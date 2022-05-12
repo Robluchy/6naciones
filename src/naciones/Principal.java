@@ -17,175 +17,117 @@ public class Principal {
 		int opcion;
 		do {
 			System.out.println("Menú .(Elige una opción 1-5)");
-			System.out.println("1. Submenú Jugadores.");
-			System.out.println("2. Submenú Entrenadores.");
-			System.out.println("3. Submenú Equipo.");
-			System.out.println("4. Crear Arbitros.");
+			System.out.println("1. Crear Jugadores.");
+			System.out.println("2. Crear Entrenadores.");
+			System.out.println("3. Crear Arbitros.");
+			System.out.println("4. Crear Equipos.");
 			System.out.println("5. Salir.");
 			opcion = sc.nextInt();
 			switch (opcion) {
 
 				case 1:
-					do {
-						System.out.println("Submenú de jugadores.(Elige una opción 1-3)");
-						System.out.println("1. Crear jugadores.");
-						System.out.println("2. Mostrar jugadores.");
-						System.out.println("3. Borrar jugadores.");
-						opcion = sc.nextInt();
-						switch (opcion) {
-							case 1:
-								crearJugadores();
-								break;
-							case 2:
-								mostrarJugadores();
-							case 3:
-								borrarJugadores();
-								break;
-							default:
-								System.out.println("Número introducido incorrecto.");
-						}
-					} while (opcion != 3);
+					jugadores = crearJugadores();
+					System.out.println("\n");
 					break;
 
 				case 2:
-					do {
-						System.out.println("Submenú de entrenadores.(Elige una opción 1-3)");
-						System.out.println("1. Crear entrenadores.");
-						System.out.println("2. Mostrar entrenadores.");
-						System.out.println("3. Borrar entrenadores.");
-						opcion = sc.nextInt();
-						switch (opcion) {
-							case 1:
-								crearEntrenadores();
-								break;
-							case 2:
-								mostrarEntrenadores();
-							case 3:
-								borrarEntrenadores();
-								break;
-							default:
-								System.out.println("Número introducido incorrecto.");
-						}
-					} while (opcion != 3);
+					entrenadores = crearEntrenadores();
+					System.out.println("\n");
 					break;
 
 				case 3:
-					do {
-						System.out.println("Submenú de arbritos.(Elige una opción 1-3)");
-						System.out.println("1. Crear arbritos.");
-						System.out.println("2. Mostrar arbritos.");
-						System.out.println("3. Borrar arbritos.");
-						opcion = sc.nextInt();
-						switch (opcion) {
-							case 1:
-								crearArbitros();
-								break;
-							case 2:
-								mostrarArbitros();
-								break;
-							case 3:
-								borrarArbitros();
-								break;
-							default:
-								System.out.println("Número introducido incorrecto.");
-						}
-					} while (opcion != 3);
+					arbitros = crearArbitros();
+					System.out.println("\n");
+					break;
 
 				case 4:
-
-					do {
-						System.out.println("Submenú de equipos.(Elige una opción 1-3)");
-						System.out.println("1. Crear equipos.");
-						System.out.println("2. Mostrar equipos.");
-						System.out.println("3. Borrar equipos.");
-						opcion = sc.nextInt();
-						switch (opcion) {
-							case 1:
-								crearEquipos();
-								break;
-							case 2:
-								mostrarEquipos();
-								break;
-							case 3:
-								borrarEquipos();
-								break;
-							default:
-								System.out.println("Número introducido incorrecto.");
-						}
-					} while (opcion != 3);
+					equipos = crearEquipos(jugadores, entrenadores);
+					System.out.println("\n");
 					break;
-
 				case 5:
-					System.out.println("Saliendo...");
-					sc.close();
+					System.out.println("\n Saliendo...");
 					break;
 				default:
-					System.out.println("Valor introducido incorrecto.");
+					System.out.println("\n Valor introducido incorrecto.");
 					break;
 			}
 		} while (opcion != 5);
 	}
 
-	private static void borrarEquipos() {
-
-	}
-
-	private static void mostrarEquipos() {
-
-	}
-
-	private static void borrarArbitros() {
-	}
-
-	private static void mostrarArbitros() {
-	}
-
-	private static void borrarEntrenadores() {
-	}
-
-	private static void mostrarEntrenadores() {
-	}
-
-	private static void borrarJugadores() {
-	}
-
-	private static void mostrarJugadores() {
-
-		
-		
-	}
-
-	private static void crearArbitros() {
-		for (int i = 0; i < 5; i++) {
-			arbitros.add(new Arbitro());
-		}
-	}
-
-	public static void crearJugadores() {
+	public static ArrayList<Jugador> crearJugadores() {
+		ArrayList<Jugador> jugadores = new ArrayList<>();
 		for (int i = 0; i < 180; i++) {
 			jugadores.add(new Jugador());
 		}
+		// for (Jugador jugador : jugadores) {
+			System.out.println("\n Se han creado " + jugadores.size() + " jugadores.\n");
+			// System.out.println(jugador);
+		// }
+		return jugadores;
 	}
 
-	public static void crearEntrenadores() {
+	public static ArrayList<Entrenador> crearEntrenadores() {
+		ArrayList<Entrenador> entrenadores = new ArrayList<>();
 		for (int i = 0; i < 18; i++) {
 			entrenadores.add(new Entrenador());
 		}
+		// for (Entrenador entrenador : entrenadores) {
+			System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.\n");
+			// System.out.println(entrenador);
+		// }
+		return entrenadores;
+
 	}
 
-	public static ArrayList<Equipo> crearEquipos() {
-		for (int i = 0; i < 6; i++) {
-			equipos.add(new Equipo( jugadores, crearEntrenadores() ));
+	public static ArrayList<Equipo> crearEquipos(ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
+		ArrayList<Equipo> equipos = new ArrayList<>();
+		if (jugadores.size() > 1 && entrenadores.size() > 1) {
+			int contadorJugadores = 0;
+			int contadorEntrenadores = 0;
+			int contadorEquipos = 0;
+			for (int i = 0; i < 6; i++) {
+				equipos.add(new Equipo());
+				contadorEquipos++;
+				System.out.println(contadorEquipos++);
+				for (int e = 0; e < 30; e++) {
+					equipos.get(i).addJugador(jugadores.get(contadorJugadores));
+					jugadores.get(contadorJugadores).setEquipo(equipos.get(i));
+					contadorJugadores++;
+				}
+				for (int j = 0; j < 3; j++) {
+					equipos.get(i).addEntrenador(entrenadores.get(contadorEntrenadores));
+					entrenadores.get(contadorEntrenadores).setEquipo(equipos.get(i));
+					contadorEntrenadores++;
+				}
+
+			}
+		} else {
+			System.out.println("\n No se han creado Jugadores o Entrenadores.\n");
+		}
+
+		for (Equipo equipo : equipos) {
+			System.out.println(equipo);
 		}
 		return equipos;
+	}
 
+	private static ArrayList<Arbitro> crearArbitros() {
+		for (int i = 0; i < 5; i++) {
+			arbitros.add(new Arbitro());
+		}
+
+		// for (Arbitro arbitro : arbitros) {
+			System.out.println("\n Se han creado " + arbitros.size() + " arbitros.\n");
+		// 	System.out.println(arbitro);
+		// }
+		return arbitros;
 	}
 
 	public static int aleatorio() {
 		int random = (int) Math.floor(Math.random() * (100 - 0 + 1) + 0);
 		return random;
 	}
-	
+
 	public static void main(String[] args) {
 		mostrarMenu();
 	}

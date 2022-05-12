@@ -8,13 +8,13 @@ public class Arbitro extends Persona {
 
     public Arbitro() {
         super();
-        presicion = 0;
+        presicion = randomInt(1, 100);
     }
 
-    public Arbitro(Arbitro arbitro) {
-        super(arbitro);
-        presicion = arbitro.presicion;
+    private int randomInt(int min, int max) {
+        return (int) Math.floor((Math.random() * (max - min + 1)) + min);
     }
+
 
     public Arbitro(String nombreCompleto, double peso, Date fechaNacimiento, int presicion) {
         super(nombreCompleto, peso, fechaNacimiento);
@@ -32,7 +32,7 @@ public class Arbitro extends Persona {
     @Override
 
     public String toString() {
-        return "Arbitro{" + "presicion=" + presicion + '}';
+        return  this.getNombreCompleto() + " presicion " + presicion +"\n";
     }
 
     // METODO EMPEZAR PARTIDO

@@ -5,69 +5,48 @@ import java.util.Date;
 
 public class Partido {
 
-    private ArrayList<Equipo> equiposVisitante;
-    private ArrayList<Equipo> equiposLocal;
+    private Equipo equipoVisitante;
+    private Equipo equipoLocal;
     private ArrayList<Arbitro> arbitros;
     private int golesVisitante;
     private int golesLocal;
     private Date fecha;
 
     public Partido() {
-        equiposVisitante = new ArrayList<>();
-        equiposLocal = new ArrayList<>();
+        equipoVisitante = new Equipo();
+        equipoLocal = new Equipo();
         arbitros = new ArrayList<>();
         golesVisitante = 0;
         golesLocal = 0;
         fecha = new Date();
     }
 
-    public Partido(Partido partido) {
+   
 
-        equiposVisitante = new ArrayList<>();
-        for (Equipo equipo : partido.equiposVisitante) {
-            this.equiposVisitante.add(new Equipo());
-            
-        }
-
-        equiposLocal = new ArrayList<>();
-        for (Equipo equipo : partido.equiposLocal) {
-            this.equiposLocal.add(new Equipo());
-        }
-
-        arbitros = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            arbitros.add(new Arbitro(partido.arbitros.get(i)));
-        }
-
-        golesVisitante = partido.golesVisitante;
-        golesLocal = partido.golesLocal;
-        fecha = partido.fecha;
-    }
-
-    public Partido(ArrayList<Equipo> equiposVisitante, ArrayList<Equipo> equiposLocal, ArrayList<Arbitro> arbitros,
+    public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros,
             int golesVisitante, int golesLocal, Date fecha) {
-        this.equiposVisitante = equiposVisitante;
-        this.equiposLocal = equiposLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.equipoLocal = equipoLocal;
         this.arbitros = arbitros;
         this.golesVisitante = golesVisitante;
         this.golesLocal = golesLocal;
         this.fecha = fecha;
     }
 
-    public ArrayList<Equipo> getEquiposVisitante() {
-        return equiposVisitante;
+    public Equipo getEquipoVisitante() {
+        return equipoVisitante;
     }
 
-    public void setEquiposVisitante(ArrayList<Equipo> equiposVisitante) {
-        this.equiposVisitante = equiposVisitante;
+    public void setEquipoVisitante(Equipo equipoVisitante) {
+        this.equipoVisitante = equipoVisitante;
     }
 
-    public ArrayList<Equipo> getEquiposLocal() {
-        return equiposLocal;
+    public Equipo getequipoLocal() {
+        return equipoLocal;
     }
 
-    public void setEquiposLocal(ArrayList<Equipo> equiposLocal) {
-        this.equiposLocal = equiposLocal;
+    public void setequipoLocal(Equipo equipoLocal) {
+        this.equipoLocal = equipoLocal;
     }
 
     public ArrayList<Arbitro> getArbitros() {
@@ -104,23 +83,23 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "equiposVisitante=" + equiposVisitante + ", equiposLocal=" + equiposLocal + ", arbitros="
+        return "Partido{" + "equipoVisitante=" + equipoVisitante + ", equipoLocal=" + equipoLocal + ", arbitros="
                 + arbitros + ", golesVisitante=" + golesVisitante + ", golesLocal=" + golesLocal + ", fecha=" + fecha
                 + '}';
     }
 
     public Equipo calcularGanador() {
         if (golesVisitante > golesLocal) {
-            return equiposVisitante.get(0);
-        } else if (golesVisitante < golesLocal) {
-            return equiposLocal.get(0);
+            return equipoVisitante;
+        } else if (golesLocal > golesVisitante) {
+            return equipoLocal;
         } else {
             return null;
         }
     }
 
     public void jugar(Estadio estadio) {
-        estadio.setCapacidad(estadio.getCapacidad() - (equiposVisitante.size() + equiposLocal.size()));
+        estadio.addPartido(this);
     }
 
 }

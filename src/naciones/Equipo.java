@@ -4,32 +4,31 @@ import java.util.ArrayList;
 
 public class Equipo {
 
-    private enum nombreNacion {
-        Irlanda,
-        Escocia,
-        Francia,
-        Gales,
-        Italia,
-        Inglaterra
-    }
+    // private enum nombreNacion {
+    // Irlanda,
+    // Escocia,
+    // Francia,
+    // Gales,
+    // Italia,
+    // Inglaterra
+    // }
 
-   
+    private ArrayList<Jugador> alineacion;
     private int partidosGanados;
     private int partidosJugados;
     private int partidosPerdidos;
     private int partidosEmpatados;
-    private ArrayList<Jugador> alineacion;
     private ArrayList<Jugador> jugadores;
     private ArrayList<Entrenador> entrenadores;
 
     public Equipo() {
         jugadores = new ArrayList<>();
         entrenadores = new ArrayList<>();
+        alineacion = new ArrayList<>();
         partidosEmpatados = 0;
         partidosGanados = 0;
         partidosJugados = 0;
         partidosPerdidos = 0;
-        alineacion = new ArrayList<>();
 
     }
 
@@ -85,6 +84,15 @@ public class Equipo {
         this.jugadores = jugadores;
     }
 
+    public void addJugador(Jugador jugador) {
+
+        this.jugadores.add(jugador);
+    }
+
+    public void addEntrenador(Entrenador entrenador) {
+        this.entrenadores.add(entrenador);
+    }
+
     public ArrayList<Entrenador> getEntrenadores() {
         return entrenadores;
     }
@@ -103,11 +111,25 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + ", partidosGanados=" + partidosGanados + ", partidosJugados=" + partidosJugados
-                + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados + ", jugadores="
-                + jugadores + ", entrenadores=" + entrenadores + '}';
+        String aux = "Equipo{" + 
+        ", partidosGanados=" + partidosGanados + 
+        ", partidosJugados=" + partidosJugados + 
+        ", partidosPerdidos=" + partidosPerdidos + 
+        ", partidosEmpatados=" + partidosEmpatados + '}'
+        + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
+
+        // for (Jugador jugador : jugadores) {
+        //     aux += "\n" + jugador.toString();
+        // }
+        // for (Entrenador entrenador : entrenadores) {
+        //     aux += "\n" + entrenador.toString();
+        // }
+        return aux;
     }
 
+    public void getName() {
+
+    }
     // Metodos
 
     public void addEmpate() {

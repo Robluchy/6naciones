@@ -14,15 +14,6 @@ public class Estadio {
         nombre = "";
     }
 
-    public Estadio(Estadio estadio) {
-        partidos = new ArrayList<>();
-        for (Partido partido : estadio.partidos) {
-            this.partidos.add(new Partido(partido));
-        }
-        capacidad = estadio.capacidad;
-        nombre = estadio.nombre;
-    }
-
     public Estadio(ArrayList<Partido> partidos, int capacidad, String nombre) {
         this.partidos = partidos;
         this.capacidad = capacidad;
