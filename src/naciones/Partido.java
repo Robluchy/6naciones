@@ -12,17 +12,6 @@ public class Partido {
     private int golesLocal;
     private Date fecha;
 
-    public Partido() {
-        equipoVisitante = new Equipo();
-        equipoLocal = new Equipo();
-        arbitros = new ArrayList<>();
-        golesVisitante = 0;
-        golesLocal = 0;
-        fecha = new Date();
-    }
-
-   
-
     public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros,
             int golesVisitante, int golesLocal, Date fecha) {
         this.equipoVisitante = equipoVisitante;

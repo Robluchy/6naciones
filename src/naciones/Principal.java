@@ -86,7 +86,7 @@ public class Principal {
 			int contadorEntrenadores = 0;
 			int contadorEquipos = 0;
 			for (int i = 0; i < 6; i++) {
-				equipos.add(new Equipo());
+				equipos.add(new Equipo(nombreNacion.values()[i]));
 				contadorEquipos++;
 				System.out.println(contadorEquipos++);
 				for (int e = 0; e < 30; e++) {

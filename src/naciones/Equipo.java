@@ -4,15 +4,7 @@ import java.util.ArrayList;
 
 public class Equipo {
 
-    // private enum nombreNacion {
-    // Irlanda,
-    // Escocia,
-    // Francia,
-    // Gales,
-    // Italia,
-    // Inglaterra
-    // }
-
+    private nombreNacion nacion;
     private ArrayList<Jugador> alineacion;
     private int partidosGanados;
     private int partidosJugados;
@@ -21,7 +13,8 @@ public class Equipo {
     private ArrayList<Jugador> jugadores;
     private ArrayList<Entrenador> entrenadores;
 
-    public Equipo() {
+    public Equipo(nombreNacion nacion) {
+        this.nacion = nacion;
         jugadores = new ArrayList<>();
         entrenadores = new ArrayList<>();
         alineacion = new ArrayList<>();
@@ -111,19 +104,22 @@ public class Equipo {
 
     @Override
     public String toString() {
-        String aux = "Equipo{" + 
-        ", partidosGanados=" + partidosGanados + 
-        ", partidosJugados=" + partidosJugados + 
-        ", partidosPerdidos=" + partidosPerdidos + 
-        ", partidosEmpatados=" + partidosEmpatados + '}'
+        String aux = nacion  + 
+        ", partidosGanados " + partidosGanados + 
+        ", partidosJugados " + partidosJugados + 
+        ", partidosPerdidos " + partidosPerdidos + 
+        ", partidosEmpatados " + partidosEmpatados + '}'
         + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
 
-        // for (Jugador jugador : jugadores) {
-        //     aux += "\n" + jugador.toString();
-        // }
-        // for (Entrenador entrenador : entrenadores) {
-        //     aux += "\n" + entrenador.toString();
-        // }
+        for (Jugador jugador : jugadores) {
+            aux += "\n" + jugador.toString();
+        }
+        for (Entrenador entrenador : entrenadores) {
+            aux += "\n" + entrenador.toString();
+        }
+        
+       
+        
         return aux;
     }
 
