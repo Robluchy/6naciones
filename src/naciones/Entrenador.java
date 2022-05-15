@@ -47,9 +47,25 @@ public class Entrenador extends Persona {
         return this.getNombreCompleto() + "  experiencia " + experiencia + "\n";
     }
 
-    // metodo poner alineacion de jugadores
-    public void ponerAlineacion(Jugador jugador) {
+   
+    public void alinearEquipos(Equipo equipo) {
+        
+    }
+    
+    public void setEntrenadores(Equipo equipo) {
+            
+    }
+
+    public void getEntrenadores(Equipo equipo) {
+        
         return;
     }
 
+    //Equipo Inglaterra
+    // for (Equipo equipos : equipo ) {
+        
+
+    // }
+
+    
 }

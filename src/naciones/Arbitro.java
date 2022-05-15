@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Arbitro extends Persona {
 
-    private int presicion;
+    private int precision;
 
     public Arbitro() {
         super();
-        presicion = randomInt(1, 100);
+        precision = randomInt(1, 100);
     }
 
     private int randomInt(int min, int max) {
@@ -16,23 +16,23 @@ public class Arbitro extends Persona {
     }
 
 
-    public Arbitro(String nombreCompleto, double peso, Date fechaNacimiento, int presicion) {
+    public Arbitro(String nombreCompleto, double peso, Date fechaNacimiento, int precision) {
         super(nombreCompleto, peso, fechaNacimiento);
-        this.presicion = presicion;
+        this.precision = precision;
     }
 
-    public int getPresicion() {
-        return presicion;
+    public int getprecision() {
+        return precision;
     }
 
-    public void setPresicion(int presicion) {
-        this.presicion = presicion;
+    public void setprecision(int precision) {
+        this.precision = precision;
     }
 
     @Override
 
     public String toString() {
-        return  this.getNombreCompleto() + " presicion " + presicion +"\n";
+        return  this.getNombreCompleto() + " precision " + precision +"\n";
     }
 
     // METODO EMPEZAR PARTIDO

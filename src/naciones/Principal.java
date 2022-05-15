@@ -21,7 +21,8 @@ public class Principal {
 			System.out.println("2. Crear Entrenadores.");
 			System.out.println("3. Crear Arbitros.");
 			System.out.println("4. Crear Equipos.");
-			System.out.println("5. Salir.");
+			System.out.println("5. Competir.");
+			System.out.println("6. Salir.");
 			opcion = sc.nextInt();
 			switch (opcion) {
 
@@ -45,6 +46,11 @@ public class Principal {
 					System.out.println("\n");
 					break;
 				case 5:
+					competir();
+					System.out.println("\n");
+					break;
+					
+				case 6:
 					System.out.println("\n Saliendo...");
 					break;
 				default:
@@ -52,6 +58,9 @@ public class Principal {
 					break;
 			}
 		} while (opcion != 5);
+	}
+
+	private static void competir() {
 	}
 
 	public static ArrayList<Jugador> crearJugadores() {
@@ -99,27 +108,29 @@ public class Principal {
 					entrenadores.get(contadorEntrenadores).setEquipo(equipos.get(i));
 					contadorEntrenadores++;
 				}
-
 			}
+			// for (int i = 0; i < 6; i++) {
+			// 	equipos.get(i).entrenador.alinearEquipos();
+			// }
+			for (Equipo equipo : equipos) {
+			System.out.println(equipo);
+			}
+			competicion.competir(equipos);
 		} else {
 			System.out.println("\n No se han creado Jugadores o Entrenadores.\n");
 		}
-
-		for (Equipo equipo : equipos) {
-			System.out.println(equipo);
-		}
 		return equipos;
 	}
+
 
 	private static ArrayList<Arbitro> crearArbitros() {
 		for (int i = 0; i < 5; i++) {
 			arbitros.add(new Arbitro());
 		}
 
-		// for (Arbitro arbitro : arbitros) {
-			System.out.println("\n Se han creado " + arbitros.size() + " arbitros.\n");
-		// 	System.out.println(arbitro);
-		// }
+		 for (Arbitro arbitro : arbitros) {
+		 	System.out.println(arbitro);
+		 }
 		return arbitros;
 	}
 

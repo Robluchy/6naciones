@@ -2,6 +2,7 @@ package naciones;
 
 import java.util.ArrayList;
 
+
 public class Equipo {
 
     private nombreNacion nacion;
@@ -94,22 +95,19 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
-    public ArrayList<Jugador> getAlineacion() {
-        return alineacion;
-    }
+    public void ponerAlineacion(Jugador jugador) {
 
-    public void setAlineacion(ArrayList<Jugador> alineacion) {
-        this.alineacion = alineacion;
+        return;
     }
 
     @Override
     public String toString() {
-        String aux = nacion  + 
-        ", partidosGanados " + partidosGanados + 
-        ", partidosJugados " + partidosJugados + 
-        ", partidosPerdidos " + partidosPerdidos + 
-        ", partidosEmpatados " + partidosEmpatados + '}'
-        + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
+        String aux = nacion +
+                ", partidosGanados " + partidosGanados +
+                ", partidosJugados " + partidosJugados +
+                ", partidosPerdidos " + partidosPerdidos +
+                ", partidosEmpatados " + partidosEmpatados + '}'
+                + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
 
         for (Jugador jugador : jugadores) {
             aux += "\n" + jugador.toString();
@@ -117,16 +115,9 @@ public class Equipo {
         for (Entrenador entrenador : entrenadores) {
             aux += "\n" + entrenador.toString();
         }
-        
-       
-        
+
         return aux;
     }
-
-    public void getName() {
-
-    }
-    // Metodos
 
     public void addEmpate() {
         partidosEmpatados++;
