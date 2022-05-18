@@ -1,7 +1,6 @@
 package naciones;
 
 import java.util.ArrayList;
-
 public class Equipo {
 
     private nombreNacion nacion;
