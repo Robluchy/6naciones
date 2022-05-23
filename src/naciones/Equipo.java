@@ -1,6 +1,7 @@
 package naciones;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Equipo {
@@ -95,9 +96,18 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
-    public void ponerAlineacion(Jugador jugador) {
-
-        return;
+    public void ponerAlineacion(ArrayList<Jugador> alineacion) {
+        Collections.sort(alineacion);
+        int count=0;
+        
+        for (Jugador jugador : alineacion) {
+            if (count >= 15){
+                break;
+            }
+            this.alineacion.add(jugador);
+            
+            count++;
+        }
     }
 
     @Override
@@ -109,12 +119,12 @@ public class Equipo {
                 ", partidosEmpatados " + partidosEmpatados + '}'
                 + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
 
-        for (Jugador jugador : jugadores) {
-            aux += "\n" + jugador.toString();
-        }
-        for (Entrenador entrenador : entrenadores) {
-            aux += "\n" + entrenador.toString();
-        }
+        // for (Jugador jugador : jugadores) {
+        //     aux += "\n" + jugador.toString();
+        // }
+        // for (Entrenador entrenador : entrenadores) {
+        //     aux += "\n" + entrenador.toString();
+        // }
 
         return aux;
     }
@@ -139,4 +149,8 @@ public class Equipo {
         partidosJugados++;
     }
 
+    public nombreNacion getNombre() {
+        return this.nacion;
+
+    }
 }

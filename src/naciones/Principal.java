@@ -8,6 +8,7 @@ public class Principal {
 
 	static Scanner sc = new Scanner(System.in);
 
+
 	static ArrayList<Jugador> jugadores = new ArrayList<>();
 	static ArrayList<Equipo> equipos = new ArrayList<>();
 	static ArrayList<Entrenador> entrenadores = new ArrayList<>();
@@ -46,7 +47,7 @@ public class Principal {
 					System.out.println("\n");
 					break;
 				case 5:
-					competir();
+					Competicion.competir(equipos);
 					System.out.println("\n");
 					break;
 					
@@ -60,8 +61,7 @@ public class Principal {
 		} while (opcion != 5);
 	}
 
-	private static void competir() {
-	}
+
 
 	public static ArrayList<Jugador> crearJugadores() {
 		ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -115,7 +115,7 @@ public class Principal {
 			for (Equipo equipo : equipos) {
 			System.out.println(equipo);
 			}
-			competicion.competir(equipos);
+
 		} else {
 			System.out.println("\n No se han creado Jugadores o Entrenadores.\n");
 		}

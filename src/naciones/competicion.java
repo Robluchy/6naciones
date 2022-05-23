@@ -1,18 +1,40 @@
 package naciones;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class competicion {
+public class Competicion {
 
-    static public void competir (ArrayList<Equipo> equipos) {
+    
+
+    public static void competir(ArrayList<Equipo> equipos){
+        if (equipos.size() <= 0) {
+            System.out.println("No hay equipos para competir");
+            return;
+        }
+
+        ArrayList<String> partidos = new ArrayList<>();
+
+        Collections.shuffle(equipos);
         
-        for (int i = 0; i < 6; i++) {
-            for (int j = 1; j < 6; j++) {
-                System.out.println("Posicion de i: " + i + " ");
-                System.out.print("Posicion de j: " + j);
+
+        for (int i = 0; i < equipos.size(); i++) {
+            for(int j = i+1; j < equipos.size(); j++){
+                partidos.add("(" + equipos.get(i).getNombre().toString() + ", " + equipos.get(j).getNombre() + ")");
             }
         }
+
+        Collections.shuffle(partidos);
+
+        for (String jornada : partidos){
+            System.out.println(jornada + "\n");
+        }
+
+        return;
+
     }
+    
+
 }
 
 

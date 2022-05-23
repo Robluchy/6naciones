@@ -13,7 +13,7 @@ public class Partido {
     private Date fecha;
 
     public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros,
-            int golesVisitante, int golesLocal, Date fecha) {
+        int golesVisitante, int golesLocal, Date fecha) {
         this.equipoVisitante = equipoVisitante;
         this.equipoLocal = equipoLocal;
         this.arbitros = arbitros;
