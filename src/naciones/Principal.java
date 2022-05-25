@@ -8,7 +8,6 @@ public class Principal {
 
 	static Scanner sc = new Scanner(System.in);
 
-
 	static ArrayList<Jugador> jugadores = new ArrayList<>();
 	static ArrayList<Equipo> equipos = new ArrayList<>();
 	static ArrayList<Entrenador> entrenadores = new ArrayList<>();
@@ -50,7 +49,7 @@ public class Principal {
 					Competicion.competir(equipos);
 					System.out.println("\n");
 					break;
-					
+
 				case 6:
 					System.out.println("\n Saliendo...");
 					break;
@@ -61,16 +60,14 @@ public class Principal {
 		} while (opcion != 5);
 	}
 
-
-
 	public static ArrayList<Jugador> crearJugadores() {
 		ArrayList<Jugador> jugadores = new ArrayList<>();
 		for (int i = 0; i < 180; i++) {
 			jugadores.add(new Jugador());
 		}
 		// for (Jugador jugador : jugadores) {
-			System.out.println("\n Se han creado " + jugadores.size() + " jugadores.\n");
-			// System.out.println(jugador);
+		System.out.println("\n Se han creado " + jugadores.size() + " jugadores.\n");
+		// System.out.println(jugador);
 		// }
 		return jugadores;
 	}
@@ -81,8 +78,8 @@ public class Principal {
 			entrenadores.add(new Entrenador());
 		}
 		// for (Entrenador entrenador : entrenadores) {
-			System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.\n");
-			// System.out.println(entrenador);
+		System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.\n");
+		// System.out.println(entrenador);
 		// }
 		return entrenadores;
 
@@ -93,11 +90,9 @@ public class Principal {
 		if (jugadores.size() > 1 && entrenadores.size() > 1) {
 			int contadorJugadores = 0;
 			int contadorEntrenadores = 0;
-			int contadorEquipos = 0;
 			for (int i = 0; i < 6; i++) {
-				equipos.add(new Equipo(nombreNacion.values()[i]));
-				contadorEquipos++;
-				System.out.println(contadorEquipos++);
+				equipos.add(new Equipo(Nacion.values()[i]));
+				// System.out.println(contadorEquipos++);
 				for (int e = 0; e < 30; e++) {
 					equipos.get(i).addJugador(jugadores.get(contadorJugadores));
 					jugadores.get(contadorJugadores).setEquipo(equipos.get(i));
@@ -110,10 +105,10 @@ public class Principal {
 				}
 			}
 			// for (int i = 0; i < 6; i++) {
-			// 	equipos.get(i).entrenador.alinearEquipos();
+			// equipos.get(i).entrenador.alinearEquipos();
 			// }
 			for (Equipo equipo : equipos) {
-			System.out.println(equipo);
+				System.out.println(equipo);
 			}
 
 		} else {
@@ -122,15 +117,14 @@ public class Principal {
 		return equipos;
 	}
 
-
 	private static ArrayList<Arbitro> crearArbitros() {
 		for (int i = 0; i < 5; i++) {
 			arbitros.add(new Arbitro());
 		}
 
-		 for (Arbitro arbitro : arbitros) {
-		 	System.out.println(arbitro);
-		 }
+		for (Arbitro arbitro : arbitros) {
+			System.out.println(arbitro);
+		}
 		return arbitros;
 	}
 

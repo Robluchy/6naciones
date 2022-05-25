@@ -71,6 +71,12 @@ public class Jugador extends Persona implements Comparable<Jugador> {
                 ", resistencia " + resistencia + "\n";
     }
 
+    // media del jugador sin el compareTo
+    public int media() {
+        int media = (this.velocidad + this.fuerza + this.resistencia) / 3;
+        return media;
+    }
+
     @Override
     public int compareTo(Jugador jugador) {
 

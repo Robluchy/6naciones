@@ -1,6 +1,6 @@
 package naciones;
 
-public enum nombreNacion {
+public enum Nacion {
     Irlanda,
     Escocia,
     Francia,

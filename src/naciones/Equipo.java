@@ -3,10 +3,9 @@ package naciones;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Equipo {
 
-    private nombreNacion nacion;
+    private Nacion nacion;
     private ArrayList<Jugador> alineacion;
     private int partidosGanados;
     private int partidosJugados;
@@ -14,8 +13,9 @@ public class Equipo {
     private int partidosEmpatados;
     private ArrayList<Jugador> jugadores;
     private ArrayList<Entrenador> entrenadores;
+    private int mediaEquipo;
 
-    public Equipo(nombreNacion nacion) {
+    public Equipo(Nacion nacion) {
         this.nacion = nacion;
         jugadores = new ArrayList<>();
         entrenadores = new ArrayList<>();
@@ -97,17 +97,26 @@ public class Equipo {
     }
 
     public void ponerAlineacion(ArrayList<Jugador> alineacion) {
+
         Collections.sort(alineacion);
-        int count=0;
-        
+
+        int count = 0;
+
         for (Jugador jugador : alineacion) {
-            if (count >= 15){
+            if (count >= 15) {
                 break;
             }
             this.alineacion.add(jugador);
-            
+
             count++;
         }
+    }
+
+    public int obtenerMedia() {
+        for (int i = 0; i < jugadores.size(); i++) {
+            mediaEquipo = jugadores.get(i).media();
+        }
+        return mediaEquipo;
     }
 
     @Override
@@ -120,10 +129,10 @@ public class Equipo {
                 + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
 
         // for (Jugador jugador : jugadores) {
-        //     aux += "\n" + jugador.toString();
+        // aux += "\n" + jugador.toString();
         // }
         // for (Entrenador entrenador : entrenadores) {
-        //     aux += "\n" + entrenador.toString();
+        // aux += "\n" + entrenador.toString();
         // }
 
         return aux;
@@ -149,7 +158,7 @@ public class Equipo {
         partidosJugados++;
     }
 
-    public nombreNacion getNombre() {
+    public Nacion getNombre() {
         return this.nacion;
 
     }
