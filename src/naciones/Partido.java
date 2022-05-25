@@ -66,20 +66,6 @@ public class Partido {
         }
     }
 
-    public int compareTo(Equipo jugador) {
-
-        int media = (this.velocidad + this.fuerza + this.resistencia) / 3;
-        int mediaJugador = (jugador.velocidad + jugador.fuerza + jugador.resistencia) / 3;
-
-        if (media < mediaJugador)
-            return 1;
-        else if (media > mediaJugador)
-            return -1;
-        else
-            return 0;
-
-    }
-
     public void jugar(Estadio estadio) {
         estadio.addPartido(this);
     }

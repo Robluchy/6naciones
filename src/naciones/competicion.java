@@ -69,7 +69,7 @@ public class Competicion {
 			jugadores.add(new Jugador());
 		}
 		// for (Jugador jugador : jugadores) {
-		System.out.println("\n Se han creado " + jugadores.size() + " jugadores.\n");
+		System.out.println("\n Se han creado " + jugadores.size() + " jugadores.");
 		// System.out.println(jugador);
 		// }
 		return jugadores;
@@ -81,7 +81,7 @@ public class Competicion {
 			entrenadores.add(new Entrenador());
 		}
 		// for (Entrenador entrenador : entrenadores) {
-		System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.\n");
+		System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.");
 		// System.out.println(entrenador);
 		// }
 		return entrenadores;
@@ -115,7 +115,7 @@ public class Competicion {
 			}
 
 		} else {
-			System.out.println("\n No se han creado Jugadores o Entrenadores.\n");
+			System.out.println("\n No se han creado Jugadores o Entrenadores.");
 		}
 		return equipos;
 	}
@@ -147,9 +147,9 @@ public class Competicion {
 			for (int i = 0; i < equipos.size(); i++) {
 				for (int j = i + 1; j < equipos.size(); j++) {
 					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros , new Date()));
-					equipos.get(i).obtenerMedia();
-					equipos.get(j).obtenerMedia();
-					partidos.get(i).calcularGanador();
+
+
+				
 				}
 			}
 
