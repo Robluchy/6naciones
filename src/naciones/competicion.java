@@ -2,68 +2,162 @@ package naciones;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Competicion {
 
-    public static void competir(ArrayList<Equipo> equipos) {
-        if (equipos.size() <= 0) {
-            System.out.println("\n No hay equipos para competir");
-            return;
-        }
+	static Scanner sc = new Scanner(System.in);
 
-        ArrayList<String> partidos = new ArrayList<>();
+	ArrayList<Jugador> jugadores = new ArrayList<>();
+	ArrayList<Equipo> equipos = new ArrayList<>();
+	ArrayList<Entrenador> entrenadores = new ArrayList<>();
+	ArrayList<Arbitro> arbitros = new ArrayList<>();
+	ArrayList<Partido> partidos = new ArrayList<>();
 
-        Collections.shuffle(equipos);
+	public void mostrarMenu() {
+		int opcion;
+		do {
+			System.out.println("Menú .(Elige una opción 1-5)");
+			System.out.println("1. Crear Jugadores.");
+			System.out.println("2. Crear Entrenadores.");
+			System.out.println("3. Crear Arbitros.");
+			System.out.println("4. Crear Equipos.");
+			System.out.println("5. Competir.");
+			System.out.println("6. Salir.");
+			opcion = sc.nextInt();
+			switch (opcion) {
 
-        for (int i = 0; i < equipos.size(); i++) {
-            for (int j = i + 1; j < equipos.size(); j++) {
-                partidos.add("(" + equipos.get(i).getNombre().toString() + " vs " + equipos.get(j).getNombre() + ")");
-            }
-        }
+			case 1:
+				jugadores = crearJugadores();
+				System.out.println("\n");
+				break;
 
-        Collections.shuffle(partidos);
+			case 2:
+				entrenadores = crearEntrenadores();
+				System.out.println("\n");
+				break;
 
-        for (String jornada : partidos) {
-            System.out.println("\n" + jornada);
-        }
+			case 3:
+				arbitros = crearArbitros();
+				System.out.println("\n");
+				break;
 
-        return;
+			case 4:
+				equipos = crearEquipos(jugadores, entrenadores);
+				System.out.println("\n");
+				break;
+			case 5:
+				this.competir();
+				System.out.println("\n");
+				break;
 
-    }
+			case 6:
+				System.out.println("\n Saliendo...");
+				break;
+			default:
+				System.out.println("\n Valor introducido incorrecto.");
+				break;
+			}
+		} while (opcion != 6);
+		sc.close();
+	}
 
-    static public void competir2(ArrayList<Equipo> equipos) {
+	public static ArrayList<Jugador> crearJugadores() {
+		ArrayList<Jugador> jugadores = new ArrayList<>();
+		for (int i = 0; i < 180; i++) {
+			jugadores.add(new Jugador());
+		}
+		// for (Jugador jugador : jugadores) {
+		System.out.println("\n Se han creado " + jugadores.size() + " jugadores.\n");
+		// System.out.println(jugador);
+		// }
+		return jugadores;
+	}
 
-        ArrayList<String> partidos = new ArrayList<>();
-        Collections.shuffle(equipos);
-        int equipoA, equipoB;
+	public static ArrayList<Entrenador> crearEntrenadores() {
+		ArrayList<Entrenador> entrenadores = new ArrayList<>();
+		for (int i = 0; i < 18; i++) {
+			entrenadores.add(new Entrenador());
+		}
+		// for (Entrenador entrenador : entrenadores) {
+		System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.\n");
+		// System.out.println(entrenador);
+		// }
+		return entrenadores;
 
-        for (int i = 0; i < equipos.size(); i++) {
-            for (int j = i + 1; j < equipos.size(); j++) {
-                partidos.add("(" + equipos.get(i).toString() + " vs " + equipos.get(j).toString() + ")");
-                partidos.add("(" + equipos.get(i).toString() + " vs " + equipos.get(j).toString() + ")");
-                equipoA = equipos.get(i).obtenerMedia();
-                equipoB = equipos.get(j).obtenerMedia();
+	}
 
-            }
-        }
-    }
+	public  ArrayList<Equipo> crearEquipos(ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
+		ArrayList<Equipo> equipos = new ArrayList<>();
+		if (jugadores.size() > 1 && entrenadores.size() > 1) {
+			int contadorJugadores = 0;
+			int contadorEntrenadores = 0;
+			for (int i = 0; i < 6; i++) {
+				equipos.add(new Equipo(Nacion.values()[i]));
+				// System.out.println(contadorEquipos++);
+				for (int e = 0; e < 30; e++) {
+					equipos.get(i).addJugador(jugadores.get(contadorJugadores));
+					jugadores.get(contadorJugadores).setEquipo(equipos.get(i));
+					contadorJugadores++;
+				}
+				for (int j = 0; j < 3; j++) {
+					equipos.get(i).addEntrenador(entrenadores.get(contadorEntrenadores));
+					entrenadores.get(contadorEntrenadores).setEquipo(equipos.get(i));
+					contadorEntrenadores++;
+				}
+			}
+			// for (int i = 0; i < 6; i++) {
+			// equipos.get(i).entrenador.alinearEquipos();
+			// }
+			for (Equipo equipo : equipos) {
+				System.out.println(equipo);
+			}
 
+		} else {
+			System.out.println("\n No se han creado Jugadores o Entrenadores.\n");
+		}
+		return equipos;
+	}
+
+	private  ArrayList<Arbitro> crearArbitros() {
+		for (int i = 0; i < 5; i++) {
+			arbitros.add(new Arbitro());
+		}
+
+		for (Arbitro arbitro : arbitros) {
+			System.out.println(arbitro);
+		}
+		return arbitros;
+	}
+
+	public  int aleatorio() {
+		int random = (int) Math.floor(Math.random() * (100 - 0 + 1) + 0);
+		return random;
+	}
+
+	public void competir() {
+		if (equipos.size() <= 0) {
+			System.out.println("\n No hay equipos para competir");
+		} 
+		else 
+		{
+			Collections.shuffle(equipos);
+
+			for (int i = 0; i < equipos.size(); i++) {
+				for (int j = i + 1; j < equipos.size(); j++) {
+					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros , new Date()));
+					equipos.get(i).obtenerMedia();
+					equipos.get(j).obtenerMedia();
+					partidos.get(i).calcularGanador();
+				}
+			}
+
+			Collections.shuffle(partidos);
+
+			for (Partido partido : partidos) {
+				System.out.println("\n" + partido.toString());
+			}
+		}
+	}
 }
-
-// 1vs2, 1vs3, 1vs4, 1vs5, 1vs6
-// 2vs3, 2vs4, 2vs5, 2vs6
-// 3vs4, 3vs5, 3vs6
-// 4vs5, 4vs6
-// 5vs6
-
-// Añadir la clase Competicion al diagrama de clases.
-// Esta clase contendrá la lógica y estructuras de datos necesarias para
-// organizar los partidos que se van a jugar en la competición,
-// así como la lógica de simulación de dicho listado de partidos. Debe
-// implementar una simulación de la competición ejecutada de una vez (simple)
-// y otra en la que la simulación se ordena y ejecuta jornada a jornada ( podéis
-// simplemente utilizar shuffle() sobre el conjunto de todos los
-// partidos posibles y luego separar por jornadas ) o sino utilizar uno de estos
-// algoritmos adaptándolo a la particularidad del torneo de las seis naciones
-// (Algoritmo competición liga de equipos modalidad "todos contra todos":
-// https://es.wikipedia.org/wiki/Sistema_de_todos_contra_todos).

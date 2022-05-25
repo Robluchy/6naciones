@@ -50,7 +50,7 @@ public class Estadio {
 
     @Override
     public String toString() {
-        return "Estadio{" + "partidos=" + partidos + ", capacidad=" + capacidad + ", nombre=" + nombre + '}';
+        return "partidosM" + partidos + ", capacidad " + capacidad + ", nombre " + nombre ;
     }
 
 }

@@ -8,17 +8,12 @@ public class Partido {
     private Equipo equipoVisitante;
     private Equipo equipoLocal;
     private ArrayList<Arbitro> arbitros;
-    private int golesVisitante;
-    private int golesLocal;
     private Date fecha;
 
-    public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros,
-        int golesVisitante, int golesLocal, Date fecha) {
+    public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros, Date fecha) {
         this.equipoVisitante = equipoVisitante;
         this.equipoLocal = equipoLocal;
         this.arbitros = arbitros;
-        this.golesVisitante = golesVisitante;
-        this.golesLocal = golesLocal;
         this.fecha = fecha;
     }
 
@@ -30,11 +25,11 @@ public class Partido {
         this.equipoVisitante = equipoVisitante;
     }
 
-    public Equipo getequipoLocal() {
+    public Equipo getEquipoLocal() {
         return equipoLocal;
     }
 
-    public void setequipoLocal(Equipo equipoLocal) {
+    public void seEquipoLocal(Equipo equipoLocal) {
         this.equipoLocal = equipoLocal;
     }
 
@@ -44,22 +39,6 @@ public class Partido {
 
     public void setArbitros(ArrayList<Arbitro> arbitros) {
         this.arbitros = arbitros;
-    }
-
-    public int getGolesVisitante() {
-        return golesVisitante;
-    }
-
-    public void setGolesVisitante(int golesVisitante) {
-        this.golesVisitante = golesVisitante;
-    }
-
-    public int getGolesLocal() {
-        return golesLocal;
-    }
-
-    public void setGolesLocal(int golesLocal) {
-        this.golesLocal = golesLocal;
     }
 
     public Date getFecha() {
@@ -72,19 +51,33 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "equipoVisitante=" + equipoVisitante + ", equipoLocal=" + equipoLocal + ", arbitros="
-                + arbitros + ", golesVisitante=" + golesVisitante + ", golesLocal=" + golesLocal + ", fecha=" + fecha
-                + '}';
+        return "Equipo Visitante: " + equipoVisitante.getNombre() + ", Equipo Local: " + equipoLocal.getNombre() + ", arbitros: "
+                + arbitros + ", fecha=" + fecha ;
     }
 
     public Equipo calcularGanador() {
-        if (golesVisitante > golesLocal) {
+        // se pide a cada equipo su media y se comparan, el que mayor media tiene gana
+        if (equipoVisitante.obtenerMedia() > equipoLocal.obtenerMedia()) {
             return equipoVisitante;
-        } else if (golesLocal > golesVisitante) {
+        } else if (equipoVisitante.obtenerMedia() < equipoLocal.obtenerMedia()) {
             return equipoLocal;
         } else {
             return null;
         }
+    }
+
+    public int compareTo(Equipo jugador) {
+
+        int media = (this.velocidad + this.fuerza + this.resistencia) / 3;
+        int mediaJugador = (jugador.velocidad + jugador.fuerza + jugador.resistencia) / 3;
+
+        if (media < mediaJugador)
+            return 1;
+        else if (media > mediaJugador)
+            return -1;
+        else
+            return 0;
+
     }
 
     public void jugar(Estadio estadio) {

@@ -58,7 +58,7 @@ abstract class Persona {
     //toString
     
     public String toString() {
-        return "Persona{" + "nombreCompleto=" + nombreCompleto + ", peso=" + peso + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return "Nombre " + nombreCompleto + ", Peso " + peso + ", Fecha de nacimiento" + fechaNacimiento ;
     }
 
 }
