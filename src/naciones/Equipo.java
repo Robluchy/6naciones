@@ -13,6 +13,7 @@ public class Equipo {
     private int partidosEmpatados;
     private ArrayList<Jugador> jugadores;
     private ArrayList<Entrenador> entrenadores;
+    private int mediaEquipo;
 
     public Equipo(nombreNacion nacion) {
         this.nacion = nacion;
@@ -139,4 +140,10 @@ public class Equipo {
         partidosJugados++;
     }
 
+    public int obtenerMedia() {
+        for (int i = 0; i < jugadores.size(); i++){
+            mediaEquipo =jugadores.get(i).media();
+        }
+        return mediaEquipo;
+    }
 }

@@ -46,10 +46,9 @@ public class Principal {
 					System.out.println("\n");
 					break;
 				case 5:
-					competir();
+					competicion.competir(equipos);
 					System.out.println("\n");
 					break;
-					
 				case 6:
 					System.out.println("\n Saliendo...");
 					break;
@@ -58,9 +57,6 @@ public class Principal {
 					break;
 			}
 		} while (opcion != 5);
-	}
-
-	private static void competir() {
 	}
 
 	public static ArrayList<Jugador> crearJugadores() {

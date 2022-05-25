@@ -1,15 +1,25 @@
 package naciones;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class competicion {
 
     static public void competir (ArrayList<Equipo> equipos) {
+
+        ArrayList<String> partidos = new ArrayList<>();
+        Collections.shuffle(equipos);
+        int equipoA, equipoB;
         
-        for (int i = 0; i < 6; i++) {
-            for (int j = 1; j < 6; j++) {
-                System.out.println("Posicion de i: " + i + " ");
-                System.out.print("Posicion de j: " + j);
+        for (int i = 0; i < equipos.size(); i++) {
+            for (int j = i+1; j < equipos.size(); j++) {
+                partidos.add("(" + equipos.get(i).toString() + " vs " + equipos.get(j).toString() + ")");
+                partidos.add("(" + equipos.get(i).toString() + " vs " + equipos.get(j).toString() + ")");
+                equipoA = equipos.get(i).obtenerMedia();
+                equipoB = equipos.get(j).obtenerMedia();
+
+                
+
             }
         }
     }
