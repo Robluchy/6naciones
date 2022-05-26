@@ -146,10 +146,7 @@ public class Competicion {
 
 			for (int i = 0; i < equipos.size(); i++) {
 				for (int j = i + 1; j < equipos.size(); j++) {
-					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros , new Date()));
-
-
-				
+					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros , new Date()));				
 				}
 			}
 
