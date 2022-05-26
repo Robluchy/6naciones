@@ -107,9 +107,7 @@ public class Competicion {
 					contadorEntrenadores++;
 				}
 			}
-			// for (int i = 0; i < 6; i++) {
-			// equipos.get(i).entrenador.alinearEquipos();
-			// }
+
 			for (Equipo equipo : equipos) {
 				System.out.println(equipo);
 			}
