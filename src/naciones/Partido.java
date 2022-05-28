@@ -67,7 +67,7 @@ public class Partido {
     }
 
     public void jugar(Estadio estadio) {
-        estadio.addPartido(this);
+        estadio.setPartido(this);
     }
 
 }

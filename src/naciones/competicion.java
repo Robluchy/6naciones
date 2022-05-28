@@ -28,36 +28,36 @@ public class Competicion {
 			opcion = sc.nextInt();
 			switch (opcion) {
 
-			case 1:
-				jugadores = crearJugadores();
-				System.out.println("\n");
-				break;
+				case 1:
+					jugadores = crearJugadores();
+					System.out.println("\n");
+					break;
 
-			case 2:
-				entrenadores = crearEntrenadores();
-				System.out.println("\n");
-				break;
+				case 2:
+					entrenadores = crearEntrenadores();
+					System.out.println("\n");
+					break;
 
-			case 3:
-				arbitros = crearArbitros();
-				System.out.println("\n");
-				break;
+				case 3:
+					arbitros = crearArbitros();
+					System.out.println("\n");
+					break;
 
-			case 4:
-				equipos = crearEquipos(jugadores, entrenadores);
-				System.out.println("\n");
-				break;
-			case 5:
-				this.competir();
-				System.out.println("\n");
-				break;
+				case 4:
+					equipos = crearEquipos(jugadores, entrenadores);
+					System.out.println("\n");
+					break;
+				case 5:
+					this.competir();
+					System.out.println("\n");
+					break;
 
-			case 6:
-				System.out.println("\n Saliendo...");
-				break;
-			default:
-				System.out.println("\n Valor introducido incorrecto.");
-				break;
+				case 6:
+					System.out.println("\n Saliendo...");
+					break;
+				default:
+					System.out.println("\n Valor introducido incorrecto.");
+					break;
 			}
 		} while (opcion != 6);
 		sc.close();
@@ -88,7 +88,7 @@ public class Competicion {
 
 	}
 
-	public  ArrayList<Equipo> crearEquipos(ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
+	public ArrayList<Equipo> crearEquipos(ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
 		ArrayList<Equipo> equipos = new ArrayList<>();
 		if (jugadores.size() > 1 && entrenadores.size() > 1) {
 			int contadorJugadores = 0;
@@ -118,7 +118,7 @@ public class Competicion {
 		return equipos;
 	}
 
-	private  ArrayList<Arbitro> crearArbitros() {
+	private ArrayList<Arbitro> crearArbitros() {
 		for (int i = 0; i < 5; i++) {
 			arbitros.add(new Arbitro());
 		}
@@ -132,14 +132,16 @@ public class Competicion {
 	public void competir() {
 		if (equipos.size() <= 0) {
 			System.out.println("\n No hay equipos para competir");
-		} 
-		else 
-		{
+		} else {
 			Collections.shuffle(equipos);
 
 			for (int i = 0; i < equipos.size(); i++) {
 				for (int j = i + 1; j < equipos.size(); j++) {
-					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros, new Date()));				
+					ArrayList<Arbitro> arbitrosPartido = new ArrayList<>();
+					arbitrosPartido.add(arbitros.get(1));
+					arbitrosPartido.add(arbitros.get(2));
+					Collections.shuffle(arbitros);
+					partidos.add(new Partido(equipos.get(i), equipos.get(j), arbitrosPartido, new Date()));
 				}
 			}
 
@@ -147,6 +149,19 @@ public class Competicion {
 
 			for (Partido partido : partidos) {
 				System.out.println("\n" + partido.toString());
+				if (partido.calcularGanador() == partido.getEquipoLocal()) {
+					partido.getEquipoLocal().addGanado();
+					partido.getEquipoVisitante().addPerdido();
+					System.out.println("Ha ganado " + partido.getEquipoLocal());
+				} else if (partido.calcularGanador() == partido.getEquipoVisitante()) {
+					partido.getEquipoVisitante().addGanado();
+					partido.getEquipoLocal().addPerdido();
+					System.out.println("Ha ganado " + partido.getEquipoVisitante());
+				} else {
+					partido.getEquipoLocal().addEmpate();
+					partido.getEquipoVisitante().addEmpate();
+					System.out.println("Empate");
+				}
 			}
 		}
 	}

@@ -20,10 +20,6 @@ public class Estadio {
         this.nombre = nombre;
     }
 
-    public ArrayList<Partido> getPartidos() {
-        return partidos;
-    }
-
     public void setPartidos(ArrayList<Partido> partidos) {
         this.partidos = partidos;
     }
@@ -44,10 +40,14 @@ public class Estadio {
         this.nombre = nombre;
     }
 
-    public void addPartido(Partido partido) {
+    public void setPartido (Partido partido) {
         partidos.add(partido);
     }
-
+    
+    public ArrayList<Partido> getPartidos() {
+        return partidos;
+    }
+    
     @Override
     public String toString() {
         return "partidosM" + partidos + ", capacidad " + capacidad + ", nombre " + nombre ;
