@@ -1,9 +1,12 @@
 package naciones;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class Entrenador extends Persona {
 
+    private ArrayList<Jugador> alineacion;
     private int experiencia;
     private Equipo equipo;
 
@@ -61,11 +64,20 @@ public class Entrenador extends Persona {
         return;
     }
 
-    //Equipo Inglaterra
-    // for (Equipo equipos : equipo ) {
-        
+    public void ponerAlineacion(ArrayList<Jugador> alineacion) {
 
-    // }
+        Collections.sort(alineacion);
 
+        int count = 0;
+
+        for (Jugador jugador : alineacion) {
+            if (count >= 15) {
+                break;
+            }
+            this.alineacion.add(jugador);
+
+            count++;
+        }
+    }
     
 }

@@ -129,11 +129,6 @@ public class Competicion {
 		return arbitros;
 	}
 
-	public  int aleatorio() {
-		int random = (int) Math.floor(Math.random() * (100 - 0 + 1) + 0);
-		return random;
-	}
-
 	public void competir() {
 		if (equipos.size() <= 0) {
 			System.out.println("\n No hay equipos para competir");
@@ -144,7 +139,7 @@ public class Competicion {
 
 			for (int i = 0; i < equipos.size(); i++) {
 				for (int j = i + 1; j < equipos.size(); j++) {
-					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros , new Date()));				
+					partidos.add( new Partido(equipos.get(i) , equipos.get(j), arbitros, new Date()));				
 				}
 			}
 

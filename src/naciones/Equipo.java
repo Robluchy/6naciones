@@ -1,7 +1,7 @@
 package naciones;
 
 import java.util.ArrayList;
-import java.util.Collections;
+ 
 
 public class Equipo {
 
@@ -96,21 +96,7 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
-    public void ponerAlineacion(ArrayList<Jugador> alineacion) {
 
-        Collections.sort(alineacion);
-
-        int count = 0;
-
-        for (Jugador jugador : alineacion) {
-            if (count >= 15) {
-                break;
-            }
-            this.alineacion.add(jugador);
-
-            count++;
-        }
-    }
 
     public int obtenerMedia() {
         for (int i = 0; i < jugadores.size(); i++) {
