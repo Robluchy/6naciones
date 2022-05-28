@@ -63,4 +63,4 @@ Desarrollo de Interfaz Gráfica de Usuario (UI) para el programa utilizando el f
 Ventana con botones para ejecutar operaciones como mínimo para: 1) Mostrar equipos y 2) lanzar la simulación de la competición ( mostrar el resultado de la tabla clasificatoria final).
 
 
-![img](https://imgur.com/ezZUJSg)
+![link](https://imgur.com/ezZUJSg)
