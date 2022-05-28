@@ -62,5 +62,5 @@ Opcional
 Desarrollo de Interfaz Gráfica de Usuario (UI) para el programa utilizando el framework JavaFX.
 Ventana con botones para ejecutar operaciones como mínimo para: 1) Mostrar equipos y 2) lanzar la simulación de la competición ( mostrar el resultado de la tabla clasificatoria final).
 
+![seisNaciones](https://user-images.githubusercontent.com/91990736/170824966-aaeb09de-f496-4302-a84f-d4102430dd40.svg)
 
-![link](https://imgur.com/ezZUJSg)
