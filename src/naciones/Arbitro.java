@@ -21,11 +21,11 @@ public class Arbitro extends Persona {
         this.precision = precision;
     }
 
-    public int getprecision() {
+    public int getPrecision() {
         return precision;
     }
 
-    public void setprecision(int precision) {
+    public void setPrecision(int precision) {
         this.precision = precision;
     }
 

@@ -50,7 +50,6 @@ public class Entrenador extends Persona {
         return this.getNombreCompleto() + "  experiencia " + experiencia + "\n";
     }
 
-   
     public void alinearEquipos(Equipo equipo) {
         
     }
