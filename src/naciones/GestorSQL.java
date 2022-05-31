@@ -12,7 +12,7 @@ public class GestorSQL {
 
 	static private Connection conexion;
 	
-	private void ConectionSql(){
+	public static void ConectionSql(){
 
 		try{
 			String basedatos = "6_naciones";
@@ -32,7 +32,7 @@ public class GestorSQL {
 		}
 	}
 		
-	private static void cerrarSql(){
+	public static void cerrarSql(){
 		
 		try {
 			conexion.close();
