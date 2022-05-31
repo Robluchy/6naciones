@@ -1,12 +1,10 @@
 package naciones;
 
 import java.util.ArrayList;
- 
 
 public class Equipo {
 
     private Nacion nacion;
-    private ArrayList<Jugador> alineacion;
     private int partidosGanados;
     private int partidosJugados;
     private int partidosPerdidos;
@@ -19,7 +17,6 @@ public class Equipo {
         this.nacion = nacion;
         jugadores = new ArrayList<>();
         entrenadores = new ArrayList<>();
-        alineacion = new ArrayList<>();
         partidosEmpatados = 0;
         partidosGanados = 0;
         partidosJugados = 0;
@@ -35,8 +32,6 @@ public class Equipo {
         this.partidosEmpatados = partidosEmpatados;
         this.jugadores = jugadores;
         this.entrenadores = entrenadores;
-        this.alineacion = alineacion;
-
     }
 
     public int getPartidosGanados() {
@@ -96,8 +91,6 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
-
-
     public int obtenerMedia() {
         for (int i = 0; i < jugadores.size(); i++) {
             mediaEquipo = jugadores.get(i).media();
@@ -113,14 +106,6 @@ public class Equipo {
                 ", partidosPerdidos " + partidosPerdidos +
                 ", partidosEmpatados " + partidosEmpatados + '}'
                 + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
-
-        // for (Jugador jugador : jugadores) {
-        // aux += "\n" + jugador.toString();
-        // }
-        // for (Entrenador entrenador : entrenadores) {
-        // aux += "\n" + entrenador.toString();
-        // }
-
         return aux;
     }
 
