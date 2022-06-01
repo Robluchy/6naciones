@@ -18,7 +18,7 @@ public class Competicion {
 	public void mostrarMenu() {
 		int opcion;
 		do {
-			System.out.println("Menú .(Elige una opción 1-5)");
+			System.out.println("Torneo 6 Naciones");
 			System.out.println("1. Crear Jugadores.");
 			System.out.println("2. Crear Entrenadores.");
 			System.out.println("3. Crear Arbitros.");
