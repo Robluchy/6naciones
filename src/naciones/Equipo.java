@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Equipo {
 
     private Nacion nacion;
+    private ArrayList<Jugador> alineacion;
     private int partidosGanados;
     private int partidosJugados;
     private int partidosPerdidos;
@@ -32,6 +33,7 @@ public class Equipo {
         this.partidosEmpatados = partidosEmpatados;
         this.jugadores = jugadores;
         this.entrenadores = entrenadores;
+        this.alineacion = alineacion;
     }
 
     public int getPartidosGanados() {
@@ -106,6 +108,7 @@ public class Equipo {
                 ", partidosPerdidos " + partidosPerdidos +
                 ", partidosEmpatados " + partidosEmpatados + '}'
                 + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
+                
         return aux;
     }
 
