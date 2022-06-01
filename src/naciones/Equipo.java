@@ -109,6 +109,12 @@ public class Equipo {
                 ", partidosEmpatados " + partidosEmpatados + '}'
                 + "\nJugadores: " + jugadores.size() + "\nEntrenadores: " + entrenadores.size();
                 
+                // for (Jugador jugador : jugadores) {
+                // aux += "\n" + jugador.toString();
+                // }
+                // for (Entrenador entrenador : entrenadores) {
+                // aux += "\n" + entrenador.toString();
+                // }
         return aux;
     }
 
