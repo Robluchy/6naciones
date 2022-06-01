@@ -26,14 +26,13 @@ public class Equipo {
     }
 
     public Equipo(int partidosGanados, int partidosJugados, int partidosPerdidos, int partidosEmpatados,
-            ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores, ArrayList<Jugador> alineacion) {
+            ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
         this.partidosGanados = partidosGanados;
         this.partidosJugados = partidosJugados;
         this.partidosPerdidos = partidosPerdidos;
         this.partidosEmpatados = partidosEmpatados;
         this.jugadores = jugadores;
         this.entrenadores = entrenadores;
-        this.alineacion = alineacion;
     }
 
     public int getPartidosGanados() {
@@ -141,5 +140,9 @@ public class Equipo {
     public Nacion getNombre() {
         return this.nacion;
 
+    }
+    
+    public void setAlineacion(ArrayList<Jugador> alineacion){
+        this.alineacion = alineacion;
     }
 }

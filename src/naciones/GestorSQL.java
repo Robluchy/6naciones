@@ -1,6 +1,5 @@
 package naciones;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,10 +10,10 @@ import java.util.ArrayList;
 public class GestorSQL {
 
 	static private Connection conexion;
-	
-	public static void ConectionSql(){
 
-		try{
+	public static void ConectionSql() {
+
+		try {
 			String basedatos = "6_naciones";
 			String host = "localhost";
 			String port = "3306";
@@ -26,21 +25,20 @@ public class GestorSQL {
 			Connection conexion = DriverManager.getConnection(urlConnection, user, pwd);
 
 			conexion.setAutoCommit(true);
-	
+
 		} catch (Exception e) {
 			System.out.println("Error al conectar");
 		}
 	}
-		
-	public static void cerrarSql(){
-		
+
+	public static void cerrarSql() {
+
 		try {
 			conexion.close();
 		} catch (Exception e) {
 			System.out.println("Error al cerrar la conexion");
 		}
 	}
-
 
 	public static void eliminarTablas() {
 		try {
@@ -60,23 +58,20 @@ public class GestorSQL {
 			st.executeUpdate(sql6);
 			st.close();
 
-
 		} catch (Exception e) {
-			System.out.println("Error al eliminar tablas");			
+			System.out.println("Error al eliminar tablas");
 		}
 	}
 
-	//implementar metodos CRUD para jugadores, entrenadores y equipos
-
-	public static void guardarJugador(ArrayList<Jugador> jugadores) {
+	public static void guardarJugadores(ArrayList<Jugador> jugadores) {
 		for (int i = 0; i < jugadores.size(); i++) {
 			try {
-				int resistencia = jugadores.get(i).getResistencia();			         	 
-				int velocidad = jugadores.get(i).getVelocidad();			           
-				int fuerza = jugadores.get(i).getFuerza();		           
+				int resistencia = jugadores.get(i).getResistencia();
+				int velocidad = jugadores.get(i).getVelocidad();
+				int fuerza = jugadores.get(i).getFuerza();
 				double peso = jugadores.get(i).getPeso();
 				String nombre_completo = jugadores.get(i).getNombreCompleto();
-				
+
 				String sql = "INSERT INTO jugador (resistencia, velocidad, fuerza, peso, nombre_completo) VALUES (?, ?, ?, ?, ?)";
 				PreparedStatement pst = conexion.prepareStatement(sql);
 				pst.setInt(1, resistencia);
@@ -86,103 +81,109 @@ public class GestorSQL {
 				pst.setString(5, nombre_completo);
 				pst.executeUpdate();
 				pst.close();
-				
-				
 
-				} catch (SQLException ex) {
-					System.out.println(ex.getMessage());
-				}
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
 			}
 		}
+	}
 
-		public static void guardarEntrenador(ArrayList<Entrenador> entrenadores) {
-			for (int i = 0; i < entrenadores.size(); i++) {
-				try {
-					String nombre = entrenadores.get(i).getNombreCompleto();	           
-					double peso = entrenadores.get(i).getPeso();
-					int experiencia = entrenadores.get(i).getExperiencia();
-					
-					//java.sql.Date dateSql= new java.sql.Date(dateUtil.getDay(),dateUtil.getMonth(),dateUtil.getYear()+95);
-
-					String sql = "INSERT INTO entrenador (nombre, experiencia) VALUES (?, ?, ?)";
-					PreparedStatement pst = conexion.prepareStatement(sql);
-					pst.setString(1, nombre);
-					pst.setDouble(2, peso);
-					pst.setInt(2, experiencia);
-					pst.executeUpdate();
-					pst.close();
-					
-					} catch (SQLException ex) {
-						System.out.println(ex.getMessage());
-					}
-				}
-			}
-
-
-		public static void guardarEquipo(Equipo equipo) {
-			for (int i = 0; i < equipo.getJugadores().size(); i++) {
-				try {
-					String nombre_equipo = equipo.getNombre.toString();
-					String nombre_entrenador = equipo.getEntrenador().getNombreCompleto();
-					String nombre_jugador = equipo.getJugadores().get(i).getNombreCompleto();
-					
-					String sql = "INSERT INTO equipo (nombre_equipo, nombre_entrenador, nombre_jugador) VALUES (?, ?, ?)";
-					PreparedStatement pst = conexion.prepareStatement(sql);
-					pst.setString(1, nombre_equipo);
-					pst.setString(2, nombre_entrenador);
-					pst.setString(3, nombre_jugador);
-					pst.executeUpdate();
-					pst.close();
-					
-					} catch (SQLException ex) {
-						System.out.println(ex.getMessage());
-					}
-				}
-			}
-		
-		public static void guardarArbrito(ArrayList<Arbitro> arbitros){
-			for (int i = 0; i < arbitros.size(); i++) {
-				try {
-					String nombre = arbitros.get(i).getNombreCompleto();
-					int precicion=arbitros.get(i).getPrecision();	
-					double peso=arbitros.get(i).getPeso();
-
-					String sql = "INSERT INTO arbitro (nombre, precicion, peso) VALUES (?, ?, ?)";
-					PreparedStatement pst = conexion.prepareStatement(sql);
-					pst.setString(1, nombre);
-					pst.setInt(2, precicion);
-					pst.setDouble(3, peso);
-					pst.executeUpdate();
-					pst.close();
-					
-					} catch (SQLException ex) {
-						System.out.println(ex.getMessage());
-					}
-
-				}
-			}
-		
-		public static void guardarPartido(Partido partido) {
+	public static void guardarEntrenadores(ArrayList<Entrenador> entrenadores) {
+		for (int i = 0; i < entrenadores.size(); i++) {
 			try {
-				String nombre_equipo_local = partido.getEquipoLocal().getNombre.toString();
-				String nombre_equipo_visitante = partido.getEquipoVisitante().getNombre.toString();
-				String nombre_entrenador_local = partido.getEquipoLocal().getEntrenador().getNombreCompleto();
-				String nombre_entrenador_visitante = partido.getEquipoVisitante().getEntrenador().getNombreCompleto();
-				String nombre_arbitro = partido.getArbitro().getNombreCompleto();
-				
-				String sql = "INSERT INTO partido (nombre_equipo_local, nombre_equipo_visitante, nombre_entrenador_local, nombre_entrenador_visitante, nombre_arbitro) VALUES (?, ?, ?, ?, ?)";
+				String nombre = entrenadores.get(i).getNombreCompleto();
+				double peso = entrenadores.get(i).getPeso();
+				int experiencia = entrenadores.get(i).getExperiencia();
+
+				// java.sql.Date dateSql= new
+				// java.sql.Date(dateUtil.getDay(),dateUtil.getMonth(),dateUtil.getYear()+95);
+
+				String sql = "INSERT INTO entrenador (nombre, experiencia) VALUES (?, ?, ?)";
 				PreparedStatement pst = conexion.prepareStatement(sql);
-				pst.setString(1, nombre_equipo_local);
-				pst.setString(2, nombre_equipo_visitante);
-				pst.setString(3, nombre_entrenador_local);
-				pst.setString(4, nombre_entrenador_visitante);
-				pst.setString(5, nombre_arbitro);
+				pst.setString(1, nombre);
+				pst.setDouble(2, peso);
+				pst.setInt(2, experiencia);
 				pst.executeUpdate();
 				pst.close();
-				
-				} catch (SQLException ex) {
-					System.out.println(ex.getMessage());
-				}
-			}
-}
 
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+	}
+
+	public static void guardarEquipos(Equipo equipo) {
+		for (int i = 0; i < equipo.getJugadores().size(); i++) {
+			try {
+				String nombre_equipo = equipo.getNombre().toString();
+				String nombre_entrenador = equipo.getEntrenadores().getNombreCompleto();
+				String nombre_jugador = equipo.getJugadores().get(i).getNombreCompleto();
+
+				String sql = "INSERT INTO equipo (nombre_equipo, nombre_entrenador, nombre_jugador) VALUES (?, ?, ?)";
+				PreparedStatement pst = conexion.prepareStatement(sql);
+				pst.setString(1, nombre_equipo);
+				pst.setString(2, nombre_entrenador);
+				pst.setString(3, nombre_jugador);
+				pst.executeUpdate();
+				pst.close();
+
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+	}
+
+	public static void guardarArbritos(ArrayList<Arbitro> arbitros) {
+		for (int i = 0; i < arbitros.size(); i++) {
+			try {
+				String nombre = arbitros.get(i).getNombreCompleto();
+				int precicion = arbitros.get(i).getPrecision();
+				double peso = arbitros.get(i).getPeso();
+
+				String sql = "INSERT INTO arbitro (nombre, precicion, peso) VALUES (?, ?, ?)";
+				PreparedStatement pst = conexion.prepareStatement(sql);
+				pst.setString(1, nombre);
+				pst.setInt(2, precicion);
+				pst.setDouble(3, peso);
+				pst.executeUpdate();
+				pst.close();
+
+			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
+			}
+
+		}
+	}
+
+	public static void guardarPartidos(ArrayList<Partido> partidos) {
+		try {
+			for (int i = 0; i < partidos.size(); i++) {
+				
+				String nombre_estadio = partidos.get(i).getEstadio();
+				String nombre_equipo_local = partidos.get(i).getEquipoLocal().getNombre().toString();
+				String nombre_equipo_visitante = partidos.get(i).getEquipoVisitante().getNombre().toString();
+				
+
+				for (int x = 0; x < partidos.get(i).getArbitros().size(); x++) {
+					String nombre_arbitro = partidos.get(i).getArbitros().get(x).getNombreCompleto();
+				}
+				
+				
+
+
+				String sql = "INSERT INTO partido (nombre_equipo_local, nombre_equipo_visitante, nombre_entrenador_local, nombre_entrenador_visitante, nombre_arbitro) VALUES (?, ?, ?, ?, ?)";
+				PreparedStatement pst = conexion.prepareStatement(sql);
+				pst.setString(1, nombre_equipo_visitante);
+				pst.setString(2, nombre_equipo_local);
+				pst.setString(3, nombre_estadio);
+				pst.executeUpdate();
+				pst.close();
+
+			}
+			
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+}
