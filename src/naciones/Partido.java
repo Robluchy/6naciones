@@ -10,6 +10,7 @@ public class Partido {
     private ArrayList<Arbitro> arbitros;
     private ArrayList<Entrenador> entrenadores;
     private Date fecha;
+    private Estadio estadio;
 
     public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros, Date fecha) {
         this.equipoVisitante = equipoVisitante;
@@ -56,8 +57,9 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Equipo Visitante: " + equipoVisitante.getNombre() + ", Equipo Local: " + equipoLocal.getNombre() + ", arbitros: "
-                + arbitros + ", fecha=" + fecha ;
+        return "Equipo Visitante: " + equipoVisitante.getNombre() + ", Equipo Local: " + equipoLocal.getNombre()
+                + ", arbitros: "
+                + arbitros + ", fecha=" + fecha;
     }
 
     public Equipo calcularGanador() {
@@ -70,23 +72,31 @@ public class Partido {
         }
     }
 
-    public void jugar(Estadio estadio) {
-        estadio.setPartido(this);
-        Equipo equipoGanador = this.calcularGanador();
-        // System.out.println("\n" + this.toString());
-				if (equipoGanador == this.getEquipoLocal()) {
-					this.getEquipoLocal().addGanado();
-					this.getEquipoVisitante().addPerdido();
-					// System.out.println("Ha ganado " + this.getEquipoLocal());
-				} else if (equipoGanador == this.getEquipoVisitante()) {
-					this.getEquipoVisitante().addGanado();
-					this.getEquipoLocal().addPerdido();
-					// System.out.println("Ha ganado " + this.getEquipoVisitante());
-				} else {
-					this.getEquipoLocal().addEmpate();
-					this.getEquipoVisitante().addEmpate();
-					// System.out.println("Empate");
-				}
+    private void setEstadio(Estadio estadio) {
+        this.estadio = estadio;
+	}
+
+    public Estadio getEstadio() {
+        return estadio;
     }
 
+    public void jugar(Estadio estadio) {
+        estadio.setPartido(this);
+        this.setEstadio(estadio);
+        Equipo equipoGanador = this.calcularGanador();
+        // System.out.println("\n" + this.toString());
+        if (equipoGanador == this.getEquipoLocal()) {
+            this.getEquipoLocal().addGanado();
+            this.getEquipoVisitante().addPerdido();
+            // System.out.println("Ha ganado " + this.getEquipoLocal());
+        } else if (equipoGanador == this.getEquipoVisitante()) {
+            this.getEquipoVisitante().addGanado();
+            this.getEquipoLocal().addPerdido();
+            // System.out.println("Ha ganado " + this.getEquipoVisitante());
+        } else {
+            this.getEquipoLocal().addEmpate();
+            this.getEquipoVisitante().addEmpate();
+            // System.out.println("Empate");
+        }
+    }
 }

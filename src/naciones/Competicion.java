@@ -24,38 +24,43 @@ public class Competicion {
 	public void mostrarMenu() {
 		int opcion;
 		do {
-			System.out.println("Torneo 6 Naciones");
-			System.out.println("1. Crear Jugadores.");
-			System.out.println("2. Crear Entrenadores.");
-			System.out.println("3. Crear Arbitros.");
-			System.out.println("4. Crear Equipos.");
-			System.out.println("5. Competir.");
+			System.out.println(" Torneo 6 Naciones ");
+			System.out.println("1. Generar Datos.");
+			System.out.println("2. Simular Competicion.");
+			System.out.println("3. Guardar en BD.");
+			System.out.println("4. Mostrar Datos.");
+			System.out.println("5. Mostrar Calificacion.");
 			System.out.println("6. Salir.");
 			opcion = sc.nextInt();
 			switch (opcion) {
 
 				case 1:
 					jugadores = crearJugadores();
-					System.out.println("\n");
+					entrenadores = crearEntrenadores();
+					arbitros = crearArbitros();
+					equipos = crearEquipos(jugadores, entrenadores);
 					break;
 
 				case 2:
-					entrenadores = crearEntrenadores();
+					this.competir();
 					System.out.println("\n");
 					break;
 
 				case 3:
-					arbitros = crearArbitros();
-					System.out.println("\n");
+
+					//GestorSQL.guardarJugadores(jugadores);
+					//GestorSQL.guardarEntrenadores(entrenadores);
+					GestorSQL.guardarArbitros2(arbitros);
+					//GestorSQL.guardarEquipos(equipos);
+
 					break;
 
 				case 4:
-					equipos = crearEquipos(jugadores, entrenadores);
-					System.out.println("\n");
+
+
 					break;
 				case 5:
-					this.competir();
-					System.out.println("\n");
+					competir();
 					break;
 
 				case 6:
@@ -78,11 +83,8 @@ public class Competicion {
 		System.out.println("\n Se han creado " + jugadores.size() + " jugadores.");
 		// System.out.println(jugador);
 		// }
-		GestorSQL.ConectionSql();
-		GestorSQL.guardarJugadores(jugadores);
-		GestorSQL.cerrarSql();
 		return jugadores;
-		
+
 	}
 
 	public static ArrayList<Entrenador> crearEntrenadores() {
@@ -90,14 +92,7 @@ public class Competicion {
 		for (int i = 0; i < 18; i++) {
 			entrenadores.add(new Entrenador());
 		}
-		// for (Entrenador entrenador : entrenadores) {
 		System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.");
-		// System.out.println(entrenador);
-		// }
-
-		GestorSQL.ConectionSql();
-		GestorSQL.guardarEntrenadores(entrenadores);
-		GestorSQL.cerrarSql();
 
 		return entrenadores;
 
@@ -123,17 +118,11 @@ public class Competicion {
 				}
 			}
 
-			for (Equipo equipo : equipos) {
-				System.out.println(equipo);
-			}
+			System.out.println("\n Se han creado " + equipos.size() + " equipos.");
 
 		} else {
 			System.out.println("\n No se han creado Jugadores o Entrenadores.");
 		}
-
-		GestorSQL.ConectionSql();
-		GestorSQL.guardarEquipos(equipos);
-		GestorSQL.cerrarSql();
 
 		return equipos;
 	}
@@ -143,13 +132,7 @@ public class Competicion {
 			arbitros.add(new Arbitro());
 		}
 
-		for (Arbitro arbitro : arbitros) {
-			System.out.println(arbitro);
-		}
-
-		GestorSQL.ConectionSql();
-		GestorSQL.guardarArbritos(arbitros);
-		GestorSQL.cerrarSql();
+		System.out.println("\n Se han creado " + arbitros.size() + " arbitro.");
 
 		return arbitros;
 	}
@@ -174,9 +157,7 @@ public class Competicion {
 			Collections.shuffle(partidos);
 
 			for (Partido partido : partidos) {
-				
 				partido.jugar(estadio);
-				
 			}
 		}
 	}
@@ -184,99 +165,91 @@ public class Competicion {
 	private static void confi() throws IOException {
 		File f;
 		FileReader lectorarchivo;
-		
-		
-		 try {
-					 FileWriter fw=new FileWriter("C:\\perro\\perro.txt");
-		
+		try {
+			FileWriter fw = new FileWriter("C:\\3\\naciones.txt");
 
-		 fw.write("LISTA DE JUGADORES\n");
+			fw.write("LISTA DE JUGADORES\n");
 			for (int i = 0; i < jugadores.size(); i++) {
-				fw.write(""+jugadores.get(i)+"\n");
+				fw.write("" + jugadores.get(i) + "\n");
 			}
-					
-			 fw.write("LISTA DE entrenadores\n");
-				for (int i = 0; i < entrenadores.size(); i++) {
-					fw.write(""+entrenadores.get(i)+"\n");
-				}
-				
-				 fw.write("LISTA DE arbitros\n");
-					for (int i = 0; i < arbitros.size(); i++) {
-						fw.write(""+arbitros.get(i)+"\n");
-					}
+
+			fw.write("LISTA DE entrenadores\n");
+			for (int i = 0; i < entrenadores.size(); i++) {
+				fw.write("" + entrenadores.get(i) + "\n");
+			}
+
+			fw.write("LISTA DE arbitros\n");
+			for (int i = 0; i < arbitros.size(); i++) {
+				fw.write("" + arbitros.get(i) + "\n");
+			}
 
 			fw.write("JUGADORES POR EQUIPO\n");
-		
-		for (int i=0; i < 6; i++) {
-			fw.write(""+equipos.get(i)+"\n");
-			fw.write(""+equipos.get(i).getJugadores()+"\n");
-			
-			
-//			fw.write(""+equipos.get(2)+"\n");
 
-			  fw.write("\n");
-			  fw.write("EQUIPO"+i+"\n");
+			for (int i = 0; i < 6; i++) {
+				fw.write("" + equipos.get(i) + "\n");
+				fw.write("" + equipos.get(i).getJugadores() + "\n");
+
+				// fw.write(""+equipos.get(2)+"\n");
+
+				fw.write("\n");
+				fw.write("EQUIPO" + i + "\n");
+			}
+
+			fw.close();
+			f = new File("C:\\perro\\perro.txt");
+			lectorarchivo = new FileReader(f);
+			BufferedReader br = new BufferedReader(lectorarchivo);
+			String l = "";
+			String aux = "";
+			while (true) {
+				aux = br.readLine();
+				if (aux != null)
+					l = l + aux + "\n";
+				else
+					break;
+			}
+			br.close();
+			lectorarchivo.close();
+			System.out.println(l);
+
+		} catch (Exception e) {
+
 		}
 
-		
-		fw.close();
-					 f= new File("C:\\perro\\perro.txt");
-						lectorarchivo = new FileReader(f);
-						BufferedReader br = new BufferedReader(lectorarchivo);
-						String l="";
-						String aux="";	 
-						while (true) {
-							aux=br.readLine();
-							if(aux!=null)
-								l=l+aux+"\n";
-							else 
-								break;
-						}
-						br.close();
-						lectorarchivo.close();
-						System.out.println(l);
-						
-					 
-				} catch (Exception e) {
-					
-				}
-		 
-	    }
-	
+	}
+
 	private static void tablas() throws IOException {
 		File f1;
 		FileReader lectorarchivo;
-		
-		 try {
-					 FileWriter fw1=new FileWriter("C:\\perro\\tabla_clasificacion.txt");
-		
-						
-		 fw1.write("Partidos");
-		 for (int i=0; i < partidos.size(); i++) {
-				fw1.write("\n"+ partidos.get(i));
-				  fw1.write("\n");
+
+		try {
+			FileWriter fw1 = new FileWriter("C:\\perro\\tabla_clasificacion.txt");
+
+			fw1.write("Partidos");
+			for (int i = 0; i < partidos.size(); i++) {
+				fw1.write("\n" + partidos.get(i));
+				fw1.write("\n");
 			}
-		fw1.close();
-					 f1= new File("C:\\perro\\tabla_clasificacion.txt");
-						lectorarchivo = new FileReader(f1);
-						BufferedReader br = new BufferedReader(lectorarchivo);
-						String l1="";
-						String aux1="";	 
-						while (true) {
-							aux1=br.readLine();
-							if(aux1!=null)
-								l1=l1+aux1+"\n";
-							else 
-								break;
-						}
-						br.close();
-						lectorarchivo.close();
-						System.out.println(l1);
-						
-					 
-				} catch (Exception e) {
-					
-				}
-		 
-	    }
+			fw1.close();
+			f1 = new File("C:\\perro\\tabla_clasificacion.txt");
+			lectorarchivo = new FileReader(f1);
+			BufferedReader br = new BufferedReader(lectorarchivo);
+			String l1 = "";
+			String aux1 = "";
+			while (true) {
+				aux1 = br.readLine();
+				if (aux1 != null)
+					l1 = l1 + aux1 + "\n";
+				else
+					break;
+			}
+			br.close();
+			lectorarchivo.close();
+			System.out.println(l1);
+
+		} catch (Exception e) {
+
+		}
+
+	}
 }
