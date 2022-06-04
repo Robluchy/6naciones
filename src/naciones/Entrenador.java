@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Entrenador extends Persona {
 
+    private int id;
     private ArrayList<Jugador> alineacion;
     private int experiencia;
     private Equipo equipo;
@@ -13,6 +14,7 @@ public class Entrenador extends Persona {
     public Entrenador() {
         experiencia = randomInt(1, 100);
         equipo = null;
+        id = 0;
     }
 
     private int randomInt(int min, int max) {
@@ -77,6 +79,14 @@ public class Entrenador extends Persona {
 
             count++;
         }
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
     
 }

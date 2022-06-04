@@ -37,8 +37,6 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
-
-
 	public int getId() {
         return id;
     }
@@ -113,7 +111,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        String aux = nacion +
+        String aux = "Id:" + id  +" "+ nacion +
                 ", partidosGanados " + partidosGanados +
                 ", partidosJugados " + partidosJugados +
                 ", partidosPerdidos " + partidosPerdidos +
@@ -156,5 +154,9 @@ public class Equipo {
     
     public void setAlineacion(ArrayList<Jugador> alineacion){
         this.alineacion = alineacion;
+    }
+
+    public ArrayList<Jugador> getAlineacion(){
+        return this.alineacion;
     }
 }

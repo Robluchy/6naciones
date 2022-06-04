@@ -5,17 +5,25 @@ import java.util.Date;
 public class Arbitro extends Persona {
 
     private int precision;
+    private int id;
 
     public Arbitro() {
         super();
         precision = randomInt(1, 100);
+        id = 0;
     }
 
     private int randomInt(int min, int max) {
         return (int) Math.floor((Math.random() * (max - min + 1)) + min);
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public Arbitro(String nombreCompleto, double peso, Date fechaNacimiento, int precision) {
         super(nombreCompleto, peso, fechaNacimiento);
         this.precision = precision;

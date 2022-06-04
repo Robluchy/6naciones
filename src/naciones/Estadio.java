@@ -6,12 +6,14 @@ public class Estadio {
 
     private ArrayList<Partido> partidos;
     private int capacidad;
+    private int id;
     private String nombre;
 
     public Estadio() {
         partidos = new ArrayList<>();
         capacidad = 0;
         nombre = "";
+        id = 0;
     }
 
     public Estadio(ArrayList<Partido> partidos, int capacidad, String nombre) {
@@ -22,6 +24,14 @@ public class Estadio {
 
     public void setPartidos(ArrayList<Partido> partidos) {
         this.partidos = partidos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCapacidad() {

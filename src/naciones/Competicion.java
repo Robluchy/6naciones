@@ -30,15 +30,18 @@ public class Competicion {
 			System.out.println("3. Guardar en BD.");
 			System.out.println("4. Mostrar Datos.");
 			System.out.println("5. Mostrar Calificacion.");
+			System.out.println("6. Reset.");
 			System.out.println("6. Salir.");
 			opcion = sc.nextInt();
 			switch (opcion) {
 
 				case 1:
+					GestorSQL.borrarDatos();
 					jugadores = crearJugadores();
 					entrenadores = crearEntrenadores();
 					arbitros = crearArbitros();
 					equipos = crearEquipos(jugadores, entrenadores);
+					System.out.println("Datos Generados.\n");
 					break;
 
 				case 2:
@@ -48,16 +51,18 @@ public class Competicion {
 
 				case 3:
 
-					//GestorSQL.guardarJugadores(jugadores);
-					//GestorSQL.guardarEntrenadores(entrenadores);
-					GestorSQL.guardarArbitros2(arbitros);
-					//GestorSQL.guardarEquipos(equipos);
+					GestorSQL.guardarEquipos(equipos);
+					GestorSQL.guardarJugadores(jugadores);
+					GestorSQL.guardarEntrenadores(entrenadores);
+					GestorSQL.guardarArbritos(arbitros);
 
 					break;
 
 				case 4:
-
-
+					GestorSQL.mostrarJugadores();
+					GestorSQL.mostrarEntrenadores();
+					GestorSQL.mostrarArbitros();
+					GestorSQL.mostrarEquipos();
 					break;
 				case 5:
 					competir();
@@ -77,14 +82,10 @@ public class Competicion {
 	public static ArrayList<Jugador> crearJugadores() {
 		ArrayList<Jugador> jugadores = new ArrayList<>();
 		for (int i = 0; i < 180; i++) {
+			
 			jugadores.add(new Jugador());
 		}
-		// for (Jugador jugador : jugadores) {
-		System.out.println("\n Se han creado " + jugadores.size() + " jugadores.");
-		// System.out.println(jugador);
-		// }
 		return jugadores;
-
 	}
 
 	public static ArrayList<Entrenador> crearEntrenadores() {
@@ -92,20 +93,17 @@ public class Competicion {
 		for (int i = 0; i < 18; i++) {
 			entrenadores.add(new Entrenador());
 		}
-		System.out.println("\n Se han creado " + entrenadores.size() + " entrenadores.");
-
 		return entrenadores;
 
 	}
 
 	public ArrayList<Equipo> crearEquipos(ArrayList<Jugador> jugadores, ArrayList<Entrenador> entrenadores) {
 		ArrayList<Equipo> equipos = new ArrayList<>();
-		if (jugadores.size() > 1 && entrenadores.size() > 1) {
+		
 			int contadorJugadores = 0;
 			int contadorEntrenadores = 0;
 			for (int i = 0; i < 6; i++) {
 				equipos.add(new Equipo(Nacion.values()[i]));
-				// System.out.println(contadorEquipos++);
 				for (int e = 0; e < 30; e++) {
 					equipos.get(i).addJugador(jugadores.get(contadorJugadores));
 					jugadores.get(contadorJugadores).setEquipo(equipos.get(i));
@@ -117,13 +115,6 @@ public class Competicion {
 					contadorEntrenadores++;
 				}
 			}
-
-			System.out.println("\n Se han creado " + equipos.size() + " equipos.");
-
-		} else {
-			System.out.println("\n No se han creado Jugadores o Entrenadores.");
-		}
-
 		return equipos;
 	}
 
@@ -131,8 +122,6 @@ public class Competicion {
 		for (int i = 0; i < 5; i++) {
 			arbitros.add(new Arbitro());
 		}
-
-		System.out.println("\n Se han creado " + arbitros.size() + " arbitro.");
 
 		return arbitros;
 	}

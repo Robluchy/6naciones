@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Jugador extends Persona implements Comparable<Jugador> {
 
+    private int id;
     private Equipo equipo;
     private int velocidad;
     private int fuerza;
@@ -16,6 +17,7 @@ public class Jugador extends Persona implements Comparable<Jugador> {
         velocidad = randomInt(1, 100);
         fuerza = randomInt(1, 100);
         resistencia = randomInt(1, 100);
+        id = 0;
     }
 
     private int randomInt(int min, int max) {
@@ -89,5 +91,13 @@ public class Jugador extends Persona implements Comparable<Jugador> {
         else
             return 0;
 
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

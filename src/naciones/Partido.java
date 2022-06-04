@@ -11,7 +11,17 @@ public class Partido {
     private ArrayList<Entrenador> entrenadores;
     private Date fecha;
     private Estadio estadio;
+    private int id;
 
+    public Partido() {
+        arbitros = new ArrayList<>();
+        entrenadores = new ArrayList<>();
+        equipoLocal = null;
+        equipoVisitante = null;
+        fecha = new Date();
+        estadio = null;
+        id = 0;
+    }
     public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros, Date fecha) {
         this.equipoVisitante = equipoVisitante;
         this.equipoLocal = equipoLocal;
@@ -19,12 +29,31 @@ public class Partido {
         this.fecha = fecha;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
     public ArrayList<Entrenador> getEntrenadores() {
         return entrenadores;
     }
 
+    public void setEntrenadores(ArrayList<Entrenador> entrenadores) {
+        this.entrenadores = entrenadores;
+    }
+
     public Equipo getEquipoVisitante() {
         return equipoVisitante;
+    }
+
+    public Date getFechaPartido() {
+        return fecha;
+    }
+
+    public void setFechaPartido(Date fecha) {
+        this.fecha = fecha;
     }
 
     public void setEquipoVisitante(Equipo equipoVisitante) {
@@ -98,5 +127,6 @@ public class Partido {
             this.getEquipoVisitante().addEmpate();
             // System.out.println("Empate");
         }
+        System.out.println("Se han generado los resultados del partido");
     }
 }
