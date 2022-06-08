@@ -1,11 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `6_naciones`;
-USE `6_naciones`;
+CREATE DATABASE IF NOT EXISTS 6_naciones;
+USE 6_naciones;
 
-
-DROP TABLE IF EXISTS `arbitros`;
+ 
 
 CREATE TABLE `arbitros` (
-  `id_arbitro` int(11) AUTO_INCREMENT,
+  `id_arbitro` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   `precision` int(100) NOT NULL,
   `fecha_nacimiento` varchar(255) NOT NULL,
@@ -13,18 +12,7 @@ CREATE TABLE `arbitros` (
   PRIMARY KEY (`id_arbitro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `arbitros_partidos`;
-
-CREATE TABLE `arbitros_partidos` (
-  `id_arbitro` int(11) NOT NULL,
-  `id_partido` int(11) NOT NULL,
-  KEY `id_arbitro` (`id_arbitro`),
-  KEY `id_partido` (`id_partido`),
-  CONSTRAINT `arbitros_partidos_ibfk_1` FOREIGN KEY (`id_arbitro`) REFERENCES `arbitros` (`id_arbitro`),
-  CONSTRAINT `arbitros_partidos_ibfk_2` FOREIGN KEY (`id_partido`) REFERENCES `partidos` (`id_partido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-DROP TABLE IF EXISTS `equipos`;
+ 
 
 CREATE TABLE `equipos` (
   `id_equipo` int(11) NOT NULL AUTO_INCREMENT,
@@ -36,7 +24,7 @@ CREATE TABLE `equipos` (
   PRIMARY KEY (`id_equipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `entrenadores`;
+ 
 
 CREATE TABLE `entrenadores` (
   `id_entrenador` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,12 +35,9 @@ CREATE TABLE `entrenadores` (
   `fecha_nacimiento` varchar(255) NOT NULL,
   PRIMARY KEY (`id_entrenador`),
   KEY `id_equipo` (`id_equipo`),
-  CONSTRAINT `entrenadores_ibfk_1` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`)
+  CONSTRAINT `entrenadores_ibfk_1` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id_equipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
-DROP TABLE IF EXISTS `estadios`;
 
 CREATE TABLE `estadios` (
   `id_estadio` int(11) NOT NULL AUTO_INCREMENT,
@@ -61,7 +46,7 @@ CREATE TABLE `estadios` (
   PRIMARY KEY (`id_estadio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `jugadores`;
+ 
 
 CREATE TABLE `jugadores` (
   `id_jugador` int(11) NOT NULL AUTO_INCREMENT,
@@ -74,18 +59,15 @@ CREATE TABLE `jugadores` (
   `peso` double(100,0) NOT NULL,
   PRIMARY KEY (`id_jugador`),
   KEY `id_equipo` (`id_equipo`),
-  CONSTRAINT `jugadores_ibfk_1` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`)
+  CONSTRAINT `jugadores_ibfk_1` FOREIGN KEY (`id_equipo`) REFERENCES `equipos` (`id_equipo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8mb4;
-
-DROP TABLE IF EXISTS `partidos`;
+ 
 
 CREATE TABLE `partidos` (
   `id_partido` int(11) NOT NULL AUTO_INCREMENT,
   `id_visitante` int(11) NOT NULL,
   `id_local` int(11) NOT NULL,
   `id_estadio` int(11) NOT NULL,
-  `goles_visitante` int(11) NOT NULL,
-  `goles_local` int(11) NOT NULL,
   `fecha_partido` varchar(255) NOT NULL,
   `resultado` varchar(255) DEFAULT 'sin resultado',
   PRIMARY KEY (`id_partido`),
@@ -93,6 +75,18 @@ CREATE TABLE `partidos` (
   KEY `id_visitante` (`id_visitante`),
   KEY `id_local` (`id_local`),
   CONSTRAINT `partidos_ibfk_1` FOREIGN KEY (`id_estadio`) REFERENCES `estadios` (`id_estadio`),
-  CONSTRAINT `partidos_ibfk_2` FOREIGN KEY (`id_visitante`) REFERENCES `equipo` (`id_equipo`),
-  CONSTRAINT `partidos_ibfk_3` FOREIGN KEY (`id_local`) REFERENCES `equipo` (`id_equipo`)
+  CONSTRAINT `partidos_ibfk_2` FOREIGN KEY (`id_visitante`) REFERENCES `equipos` (`id_equipo`),
+  CONSTRAINT `partidos_ibfk_3` FOREIGN KEY (`id_local`) REFERENCES `equipos` (`id_equipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ 
+
+CREATE TABLE `arbitros_partidos` (
+  `id_arbitro` int(11) NOT NULL,
+  `id_partido` int(11) NOT NULL,
+  `actas` varchar(255),
+  KEY `id_arbitro` (`id_arbitro`),
+  KEY `id_partido` (`id_partido`),
+  CONSTRAINT `arbitros_partidos_ibfk_1` FOREIGN KEY (`id_arbitro`) REFERENCES `arbitros` (`id_arbitro`),
+  CONSTRAINT `arbitros_partidos_ibfk_2` FOREIGN KEY (`id_partido`) REFERENCES `partidos` (`id_partido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
