@@ -65,6 +65,7 @@ public class GestorSQL {
 		conectar();
 		for (int i = 0; i < jugadores.size(); i++) {
 			try {
+				
 				Date fecha_nacimiento = new Date(jugadores.get(i).getFechaNacimiento().getTime());
 				int id_equipo = jugadores.get(i).getEquipo().getId();
 				int resistencia = jugadores.get(i).getResistencia();
@@ -108,6 +109,7 @@ public class GestorSQL {
 		conectar();
 		for (int i = 0; i < entrenadores.size(); i++) {
 			try {
+		
 				int id_equipo = entrenadores.get(i).getEquipo().getId();
 				String nombre = entrenadores.get(i).getNombreCompleto();
 				double peso = entrenadores.get(i).getPeso();
@@ -182,7 +184,7 @@ public class GestorSQL {
 			}
 		}
 		desconectar();
-		System.out.println(equipos);
+
 	}
 
 	public static void guardarArbritos(ArrayList<Arbitro> arbitros) {
@@ -234,7 +236,6 @@ public class GestorSQL {
 
 				int id_local = partidos.get(i).getEquipoLocal().getId();
 				int id_visitante = partidos.get(i).getEquipoVisitante().getId();
-				int estadio = partidos.get(i).getEstadio().getId();
 				Date fecha_partido = new Date();
 				String resultado = "a";
 
@@ -246,9 +247,8 @@ public class GestorSQL {
 				PreparedStatement pst = conexion.prepareStatement(sql);
 				pst.setInt(1, id_visitante);
 				pst.setInt(2, id_local);
-				pst.setInt(3, estadio);
-				pst.setObject(4, fecha_partido);
-				pst.setString(5, resultado);
+				pst.setObject(3, fecha_partido);
+				pst.setString(4, resultado);
 
 				pst.executeUpdate();
 

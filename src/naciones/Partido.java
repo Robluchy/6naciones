@@ -10,8 +10,9 @@ public class Partido {
     private ArrayList<Arbitro> arbitros;
     private ArrayList<Entrenador> entrenadores;
     private Date fecha;
-    private Estadio estadio;
     private int id;
+    private int golesLocal;
+    private int golesVisitante;
 
     public Partido() {
         arbitros = new ArrayList<>();
@@ -19,14 +20,28 @@ public class Partido {
         equipoLocal = null;
         equipoVisitante = null;
         fecha = new Date();
-        estadio = null;
-        id = 0;
     }
     public Partido(Equipo equipoVisitante, Equipo equipoLocal, ArrayList<Arbitro> arbitros, Date fecha) {
         this.equipoVisitante = equipoVisitante;
         this.equipoLocal = equipoLocal;
         this.arbitros = arbitros;
         this.fecha = fecha;
+    }
+
+    public int getGolesLocal() {
+        return golesLocal;
+    }
+
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
+    }
+
+    public int getGolesVisitante() {
+        return golesVisitante;
+    }
+
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
     }
 
     public void setId(int id) {
@@ -101,32 +116,37 @@ public class Partido {
         }
     }
 
-    private void setEstadio(Estadio estadio) {
-        this.estadio = estadio;
-	}
-
-    public Estadio getEstadio() {
-        return estadio;
+    private int randomInt(int min, int max) {
+        return (int) Math.floor((Math.random() * (max - min + 1)) + min);
     }
-
+    
     public void jugar(Estadio estadio) {
         estadio.setPartido(this);
-        this.setEstadio(estadio);
         Equipo equipoGanador = this.calcularGanador();
         // System.out.println("\n" + this.toString());
-        if (equipoGanador == this.getEquipoLocal()) {
-            this.getEquipoLocal().addGanado();
-            this.getEquipoVisitante().addPerdido();
-            // System.out.println("Ha ganado " + this.getEquipoLocal());
-        } else if (equipoGanador == this.getEquipoVisitante()) {
-            this.getEquipoVisitante().addGanado();
-            this.getEquipoLocal().addPerdido();
-            // System.out.println("Ha ganado " + this.getEquipoVisitante());
-        } else {
-            this.getEquipoLocal().addEmpate();
-            this.getEquipoVisitante().addEmpate();
-            // System.out.println("Empate");
-        }
-        System.out.println("Se han generado los resultados del partido");
+				if (equipoGanador == this.getEquipoLocal()) {
+					this.getEquipoLocal().addGanado();
+					this.getEquipoVisitante().addPerdido();
+					golesLocal=randomInt(20,50);
+					golesVisitante=randomInt(0,19);
+					
+					// System.out.println("Ha ganado " + this.getEquipoLocal());
+				} else if (equipoGanador == this.getEquipoVisitante()) {
+					this.getEquipoVisitante().addGanado();
+					this.getEquipoLocal().addPerdido();
+					golesLocal=randomInt(0,35);
+					golesVisitante=randomInt(36,70);
+					// System.out.println("Ha ganado " + this.getEquipoVisitante());
+				} else {
+					this.getEquipoLocal().addEmpate();
+					this.getEquipoVisitante().addEmpate();
+					int auxGoles = randomInt(0,75);
+					golesLocal=auxGoles;
+					golesVisitante=auxGoles;
+					// System.out.println("Empate");
+				}
+				arbitros.get(0).finalizarPartido(this);
+				arbitros.get(0).escribirActa(this);
+				
     }
 }

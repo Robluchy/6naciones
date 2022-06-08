@@ -31,30 +31,30 @@ public class Competicion {
 			System.out.println("4. Mostrar Datos.");
 			System.out.println("5. Mostrar Calificacion.");
 			System.out.println("6. Reset.");
-			System.out.println("6. Salir.");
+			System.out.println("7. Salir.");
 			opcion = sc.nextInt();
 			switch (opcion) {
 
 				case 1:
-					GestorSQL.borrarDatos();
+					//GestorSQL.borrarDatos();
 					jugadores = crearJugadores();
 					entrenadores = crearEntrenadores();
 					arbitros = crearArbitros();
 					equipos = crearEquipos(jugadores, entrenadores);
+
 					System.out.println("Datos Generados.\n");
 					break;
-
-				case 2:
+					
+					case 2:
 					this.competir();
-					System.out.println("\n");
 					break;
-
 				case 3:
 
 					GestorSQL.guardarEquipos(equipos);
-					GestorSQL.guardarJugadores(jugadores);
-					GestorSQL.guardarEntrenadores(entrenadores);
-					GestorSQL.guardarArbritos(arbitros);
+					// GestorSQL.guardarJugadores(jugadores);
+					// GestorSQL.guardarEntrenadores(entrenadores);
+					// GestorSQL.guardarArbritos(arbitros);
+					// GestorSQL.guardarPartidos(partidos);
 
 					break;
 
